@@ -1,6 +1,6 @@
 import { Redirect, Switch } from "react-router-dom";
-import Home from "../screens/Home";
-import Login from "../screens/Login";
+import Home from "screens/Home";
+import Login from "screens/Login";
 import PrivateRoute from "./PrivateRoute";
 
 function BaseRouter() {

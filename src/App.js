@@ -1,10 +1,9 @@
 import React from 'react'
+import BaseRouter from './components/BaseRouter'
 
 function App() {
   return (
-    <div>
-      App JS
-    </div>
+    <BaseRouter />
   )
 }
 

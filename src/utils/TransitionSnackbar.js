@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Alert, Slide, Snackbar } from "@mui/material";
 
 function TransitionSnackbar({open, closeSnackbar, message, severity}) {
-  const [transition, setTransition] = useState(() => TransitionRight);
+  const [transition, ] = useState(() => TransitionRight);
 
   function TransitionRight(props) {
     return <Slide {...props} direction="right" />;

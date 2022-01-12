@@ -1,0 +1,12 @@
+.blue__button.header__button button{
+  background-color:#5fc4f3 !important
+}
+
+.blue__button.new{
+  display: flex;
+  justify-content: center;
+}
+
+.blue__button.new span{
+  color: white;
+}

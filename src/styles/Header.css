@@ -1,0 +1,39 @@
+.header {
+	display: flex;
+	margin: 15px;
+	justify-content: space-between;
+}
+
+.header__options {
+	display: flex;
+	box-shadow: 5px 5px 5px -1px rgba(0, 0, 0, 0.75);
+}
+
+.header__options a{
+	border: 2px solid #090809;
+}
+
+.header__options a:not(:last-child){
+	border-right: none;
+}
+
+.header__option {
+	padding: 5px 15px;
+}
+
+
+.header__option > h3 {
+	font-weight: 500;
+}
+
+.header__options a:hover {
+	background-color: #5fc4f3;
+	cursor: pointer;
+}
+
+.header__name{
+  margin: 15px;
+  margin-bottom: 20px;
+  font-size: xxx-large;
+  font-weight: 500;
+}

@@ -1,0 +1,21 @@
+.header__buttons {
+	display: flex;
+}
+
+.header__button {
+  padding: 0px 12px;
+}
+
+.header__button button{
+  text-transform: none;
+  font-size: 15px;
+}
+
+.header__button button{
+  box-shadow: 5px 5px 5px -1px rgba(0, 0, 0, 0.75);
+  padding: 5px 16px;
+}
+
+.header__button:last-child button{
+  background-color: #ff8360 !important;
+}

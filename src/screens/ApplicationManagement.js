@@ -1,13 +1,15 @@
-import Table from 'components/Table'
-import React from 'react'
-import { columns, rows } from 'utils/tableColumns/MockColumns'
+import AppManagementHeader from "components/ApplicationManagement/AppManagementHeader";
+import AppManagementTable from "components/ApplicationManagement/AppManagementTable";
+import React from "react";
+import "styles/Management.css"
 
 function ApplicationManagement() {
   return (
-    <div>
-      <Table columns={columns} mockRows={rows} />
+    <div className="management">
+      <AppManagementHeader />
+      <AppManagementTable />
     </div>
-  )
+  );
 }
 
-export default ApplicationManagement
+export default ApplicationManagement;

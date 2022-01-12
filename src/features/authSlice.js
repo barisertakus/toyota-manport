@@ -15,6 +15,7 @@ export const fetchUserData = createAsyncThunk(
     try {
       const accessToken = localStorage.getItem("token");
       const response = await api.post("api/auth/getUserFromToken", { token: accessToken });
+      console.log(response.data)
       return response.data;
     } catch (e) {
       localStorage.removeItem("token");
@@ -71,6 +72,7 @@ export const authSlice = createSlice({
       state.loading = false;
       state.userData = {};
       state.token = null;
+      if(!state.isChecked) state.isChecked = true;
     },
   },
 });

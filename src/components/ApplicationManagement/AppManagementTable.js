@@ -1,4 +1,4 @@
-import Table from 'components/Table';
+import Table from 'components/core/Table';
 import React from 'react'
 import { columns, rows } from "utils/tableColumns/MockColumns";
 

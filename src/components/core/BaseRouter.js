@@ -5,6 +5,7 @@ import { Redirect, Route, Switch } from "react-router-dom";
 import ApplicationManagement from "screens/ApplicationManagement";
 import Home from "screens/Home";
 import Login from "screens/Login";
+import Plants from "screens/Plants";
 import SignUp from "screens/Signup";
 import PrivateRoute from "./PrivateRoute";
 
@@ -22,6 +23,7 @@ function BaseRouter() {
       <Route path="/login" component={Login} />
       <PrivateRoute path="/" exact component={Home} />
       <PrivateRoute path="/management" exact component={ApplicationManagement} />
+      <PrivateRoute path="/management/plants" component={Plants} />
       <Redirect to={"/404"} />
     </Switch>
   );

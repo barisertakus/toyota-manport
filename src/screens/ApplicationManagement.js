@@ -1,5 +1,5 @@
-import AppManagementHeader from "components/ApplicationManagement/AppManagementHeader";
-import AppManagementTable from "components/ApplicationManagement/AppManagementTable";
+import AppManagementHeader from "components/applicationManagement/AppManagementHeader";
+import AppManagementTable from "components/applicationManagement/AppManagementTable";
 import React from "react";
 import "styles/Management.css"
 

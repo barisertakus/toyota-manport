@@ -1,13 +1,17 @@
-import { Container } from "@mui/material";
+import { Container, IconButton } from "@mui/material";
+import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
 import Table from "components/core/Table";
 import React from "react";
 import { PlantColumns } from "utils/tableColumns/PlantColumns";
 
 const getPlantColumns = PlantColumns.map((e, i) => ({
   ...e,
-  ...(e.field === "lastActionDate" && {
-    renderCell: (params) =>
-      (params.row.updatedDate || params.row.createdDate).replace("T", " "),
+  ...(e.field === "actions" && {
+    renderCell: (params) => (
+      <IconButton style={{margin: 0}}>
+        <DeleteOutlineOutlinedIcon style={{margin: 0}} />
+      </IconButton>
+    ),
   }),
 }));
 

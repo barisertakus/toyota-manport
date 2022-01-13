@@ -22,6 +22,7 @@ export const PlantColumns = [
   {
     field : "actions",
     headerName : "Actions",
-    width : 150,
+    width : 140,
+    align: "center"
   },
 ]

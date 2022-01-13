@@ -82,7 +82,6 @@ const Table = forwardRef(({ columns, url }, ref) => {
         sortModel={sortModel}
         onSortModelChange={handleSortModelChange}
         rowCount={rowCount}
-        // rowCount={rowCount}
         rowsPerPageOptions={[2,5, 10, 20, 50, 100]}
       />
     </div>

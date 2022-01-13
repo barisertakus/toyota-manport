@@ -1,4 +1,4 @@
-export const PlantColumns = [
+export const getPlantColumns = [
   {
     field : "country",
     headerName : "Country",

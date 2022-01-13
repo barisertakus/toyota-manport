@@ -1,4 +1,4 @@
-import Header from "components/core/Header";
+import Header from "components/core/Header/Header";
 import React from "react";
 
 function CreatePlantHeader() {

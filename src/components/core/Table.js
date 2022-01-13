@@ -62,6 +62,7 @@ const Table = forwardRef(({ columns, url }, ref) => {
     }
   };
 
+  //eslint-disable-next-line
   useEffect(() => loadData(), [currentPage, pageSize, sortModel]);
 
 

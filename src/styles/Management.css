@@ -19,3 +19,26 @@
 .header__button:last-child button{
   background-color: #ff8360 !important;
 }
+
+.management__actions{
+  line-height: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  flex: 1;
+}
+
+.table__switch > span{
+  color: white !important;
+}
+
+.table__switch > .Mui-checked + .MuiSwitch-track{
+  background-color: green !important
+}
+
+.table__switch > .MuiSwitch-track{
+  background-color: rgb(163, 160, 160);
+}

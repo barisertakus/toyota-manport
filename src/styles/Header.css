@@ -26,7 +26,8 @@
 	font-weight: 500;
 }
 
-.header__options a:hover {
+.header__options a:hover,
+.header__options .active {
 	background-color: #5fc4f3;
 	cursor: pointer;
 }

@@ -5,7 +5,7 @@ import { columns, rows } from "utils/tableColumns/MockColumns";
 function AppManagementTable() {
   return (
     <div>
-      <Table columns={columns} mockRows={rows} />
+      <Table columns={columns} mockRows={rows} url="" />
     </div>
   )
 }

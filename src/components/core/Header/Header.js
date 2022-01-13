@@ -4,7 +4,6 @@ import "styles/Header.css";
 import HeaderRow from "./HeaderRow";
 function Header(props) {
   const { pathname } = useLocation();
-	console.log(pathname)
   return (
     <div className="header">
       <div className="header__options">

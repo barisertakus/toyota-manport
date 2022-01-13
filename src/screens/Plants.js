@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 import "styles/Plants.css"
 
 function Plants() {
+
   return (
 		<div className="plant__management">
       <PlantsHeader />

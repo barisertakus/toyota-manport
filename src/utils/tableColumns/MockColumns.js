@@ -26,7 +26,7 @@ export const columns = [
     width: 150,
   },
   {
-    field: "ip_adress",
+    field: "ip_address",
     headerName: "ip_adress",
     width: 150,
   },

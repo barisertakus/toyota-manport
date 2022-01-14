@@ -7,12 +7,12 @@ export const getPlantColumns = [
   {
     field : "shortCode",
     headerName : "Short Name",
-    width : 250,
+    width : 150,
   },
   {
     field : "fullName",
     headerName : "Full Name",
-    width : 250,
+    width : 350,
   },
   {
     field : "liveAppCount",

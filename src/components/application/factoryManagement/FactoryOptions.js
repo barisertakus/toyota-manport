@@ -1,8 +1,14 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import plantService from "service/plantService";
+import FactoryDialogContent from "./FactoryDialogContent";
 import FactoryRow from "./FactoryRow";
 
-function FactoryOptions({ plants, setPlants }) {
+function FactoryOptions({
+  plants,
+  setPlants,
+  getIssuesInCountry,
+  deleteIssues,
+}) {
   useEffect(() => {
     plantService
       .getAll()
@@ -10,18 +16,64 @@ function FactoryOptions({ plants, setPlants }) {
       .catch((error) => console.log(error));
   }, [setPlants]);
 
+  const [issuesRemove, setIssuesRemove] = useState([]);
+  const [plantRemove, setPlantRemove] = useState({});
+  const [open, setOpen] = useState(false);
+
+  const openDialog = () => {
+    setOpen(true);
+  };
+
+  const closeDialog = () => {
+    setOpen(false);
+  };
+
+  const handleRemove = () => {
+    closeDialog();
+    deleteIssues(issuesRemove);
+    const { action, result, country } = plantRemove; 
+    changeStatus(action, result, country); // change factory status after delete issues
+  };
+
+  const handleCancel = () => {
+    closeDialog();
+    setIssuesRemove([]);
+  };
+
   const addTractAndAliveToPlants = (plants) => {
     return plants.map((plant) => ({ ...plant, track: false, alive: false }));
   };
 
+  const checkIsAliveFalse = (action, result) => {
+    return action === "alive" && result === false;
+  };
+
   const handleChange = (e, action) => {
     // action = track or alive
-    const plantFound = plants.find((plant) => plant.country === e.target.name);
     const result = e.target.checked; // true or false
+    const country = e.target.name;
+    const isAliveFalse = checkIsAliveFalse(action, result);
+    if (isAliveFalse) {
+      // if alive is false
+      const issues = getIssuesInCountry(country);
+      if (issues?.length) {
+        setPlantRemove({ action, result, country });
+        setIssuesRemove(issues);
+        openDialog();
+      } else {
+        changeStatus(action, result, country);
+      }
+    } else {
+      changeStatus(action, result, country);
+    }
+  };
+
+  const changeStatus = (action, result, country) => {
+    const plantFound = plants.find((plant) => plant.country === country);
     setPlants(
       plants.map((plant) =>
         plantFound.id === plant.id
-          ? action === "alive" && result === false // If alive is false then track must also be false
+          ? checkIsAliveFalse(action, result) // If alive is false then track must also be false
             ? { ...plantFound, alive: false, track: false }
             : { ...plantFound, [action]: result }
           : plant
@@ -50,6 +102,13 @@ function FactoryOptions({ plants, setPlants }) {
           />
         ))}
       </div>
+      <FactoryDialogContent
+        open={open}
+        setOpen={setOpen}
+        handleCancel={handleCancel}
+        handleRemove={handleRemove}
+        issuesRemove={issuesRemove}
+      />
     </div>
   );
 }

@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import ApplicationDetailHeader from "../ApplicationDetailHeader";
 import CreateAppIssue from "./CreateAppIssue";
 import IssueManagementTable from "./IssueManagementTable";
 
-function IssueManagement({ plants }) {
-  const [issues, setIssues] = useState([]);
+function IssueManagement({ issues, setIssues, plants }) {
 
   const addIssue = (issue) => {
     setIssues([...issues, {...issue, id:issues.length + 1}])

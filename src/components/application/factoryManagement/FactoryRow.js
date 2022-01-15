@@ -21,6 +21,7 @@ function FactoryRow({plant, handleChange}) {
 					name={country}
 					checked={track}
 					onChange={(e)=>handleChange(e,"track")}
+					disabled={!alive}
 				/>
 			</div>
     </div>

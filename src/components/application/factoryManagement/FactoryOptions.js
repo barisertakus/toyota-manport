@@ -20,11 +20,17 @@ function FactoryOptions({ plants, setPlants }) {
     const result = e.target.checked; // true or false
     setPlants(
       plants.map((plant) =>
-        plantFound.id === plant.id ? { ...plantFound, [action]: result } : plant
+        plantFound.id === plant.id
+          ? action === "alive" && result === false // If alive is false then track must also be false
+            ? { ...plantFound, alive: false, track: false }
+            : { ...plantFound, [action]: result }
+          : plant
       )
       // ...plant and change field like -> alive : true
     );
   };
+
+  console.log(plants);
 
   return (
     <div className="country__management">

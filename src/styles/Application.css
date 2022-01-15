@@ -122,3 +122,76 @@
 		justify-content: space-between;
 	}
 }
+
+.appIssues {
+	padding-top: 10px;
+}
+
+.appIssue {
+	display: flex;
+	align-items: center;
+	margin-bottom: 20px;
+	justify-content: space-between;
+	min-width: 500px;
+}
+
+.appIssue > div{
+	max-width: 250px;
+}
+
+.create__appIssue-btn{
+	margin-top: 20px;
+	display: flex;
+	justify-content: center;
+}
+
+/* .appIssues h3 {
+	margin-top: 10px;
+	margin-bottom: 45px;
+} */
+/* 
+.appIssue__form {
+	margin: 20px;
+	margin-bottom: 0px;
+}
+
+.appIssue__details {
+	margin: 10px;
+	display: flex;
+	justify-content: center;
+}
+
+.appIssue__properties {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	margin-left: 45px;
+}
+
+.appIssue__properties > div {
+	margin-bottom: 10px;
+	width: 300px;
+} */
+
+.add-btn {
+	display: flex;
+	justify-content: center;
+}
+
+.add-btn button {
+	background-color: #5fc4f3 !important;
+	color: white;
+  padding: 6px 16px;
+	box-shadow: 2px 3px 5px -1px rgba(0, 0, 0, 0.75);
+}
+
+.add-btn button:hover{
+	box-shadow: 5px 5px 5px -1px rgba(0, 0, 0, 0.75);
+}
+
+.selects select{
+	height: 50px;
+	width: 300px;
+	padding: 8px;
+	font-size: 16px;
+}

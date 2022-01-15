@@ -1,12 +1,14 @@
 import React from "react";
 import ApplicationDetailHeader from "../ApplicationDetailHeader";
+import CreateAppIssue from "./CreateAppIssue";
 import IssueManagementTable from "./IssueManagementTable";
 
-function IssueManagement({ issues }) {
+function IssueManagement({ issues, plants }) {
   return (
     <div className="issue__management">
       <ApplicationDetailHeader name="Issue Management" />
       <IssueManagementTable rows={issues} />
+      <CreateAppIssue plants={plants} />
     </div>
   );
 }

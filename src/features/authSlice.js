@@ -25,8 +25,10 @@ export const fetchUserData = createAsyncThunk(
 
 export const login = createAsyncThunk("auth/login", async ({ payload, history}) => {
   const response = await api.post("api/auth/login", payload)
-  localStorage.setItem("token",response.data.token);
+  const {token} = response.data
+  localStorage.setItem("token",token);
   history.push("/");
+  api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
   return response.data;
 });
 

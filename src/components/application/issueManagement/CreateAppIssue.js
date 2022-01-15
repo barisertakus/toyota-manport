@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ControlledFormDialog from "utils/ControlledFormDialog";
 import CreateAppIssueForm from "./CreateAppIssueForm";
 
-function CreateAppIssue({plants}) {
+function CreateAppIssue({plants, addIssue}) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -14,7 +14,7 @@ function CreateAppIssue({plants}) {
         open={open}
         setOpen={setOpen}
       >
-        <CreateAppIssueForm plants={plants} />
+        <CreateAppIssueForm plants={plants} setOpen={setOpen} addIssue={addIssue} />
       </ControlledFormDialog>
     </div>
   );

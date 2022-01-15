@@ -4,7 +4,7 @@ import { impactTypes, servers } from "utils/Enums";
 import AppIssueSelectRow from "./AppIssueSelectRow";
 import AppIssueTextRow from "./AppIssueTextRow";
 
-function CreateAppIssueForm({ plants }) {
+function CreateAppIssueForm({ plants, addIssue, setOpen }) {
   const [issue, setIssue] = useState({
     issueType: "",
     impactType: "",
@@ -18,6 +18,11 @@ function CreateAppIssueForm({ plants }) {
   const handleChange = (e) => {
     setIssue({ ...issue, [e.target.name]: e.target.value });
   };
+
+  const handleSave = () => {
+    addIssue(issue);
+    setOpen(false);
+  }
 
   useEffect(() => {
     setCountries(
@@ -83,7 +88,7 @@ function CreateAppIssueForm({ plants }) {
       <div className="add-btn">
         <Button
           variant="contained"
-          onClick={() => console.log(issue)}
+          onClick={handleSave}
           // disabled={props.disabled}
         >
           Add Issue

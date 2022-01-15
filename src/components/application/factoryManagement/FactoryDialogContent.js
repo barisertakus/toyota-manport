@@ -1,10 +1,10 @@
 import React from "react";
 import { Button, Divider, List, ListItem, ListItemText } from "@mui/material";
-import DeleteDialog from "utils/DeleteDialog";
+import ControlledDialog from "utils/ControlledDialog";
 
 function FactoryDialogContent({open, setOpen, handleCancel, handleRemove, issuesRemove}) {
   return (
-    <DeleteDialog
+    <ControlledDialog
       dialogTitle="Remove From Country"
       open={open}
       setOpen={setOpen}
@@ -35,7 +35,7 @@ function FactoryDialogContent({open, setOpen, handleCancel, handleRemove, issues
           REMOVE
         </Button>
       </div>
-    </DeleteDialog>
+    </ControlledDialog>
   );
 }
 

@@ -3,7 +3,7 @@ import { Button, Container, IconButton } from "@mui/material";
 import SimpleTable from "components/core/SimpleTable";
 import React, { useState } from "react";
 import { Switch } from "react-router-dom";
-import DeleteDialog from "utils/DeleteDialog";
+import ControlledDialog from "utils/ControlledDialog";
 import { getIssueAppColumns } from "utils/tableColumns/IssueAppColumns";
 
 function IssueManagementTable({ rows, removeIssue }) {
@@ -24,12 +24,12 @@ function IssueManagementTable({ rows, removeIssue }) {
 
   const renderDialog = (id) => {
     return (
-      <DeleteDialog
+      <ControlledDialog
         dialogTitle="Remove Issue"
         open={open}
         setOpen={setOpen}
         dialogProps={{ maxWidth: "sm", fullWidth: true }}
-        deleteButton={
+        controlButton={
           <IconButton className="table__icon" onClick={openDialog}>
             <DeleteOutlineOutlined />
           </IconButton>
@@ -44,7 +44,7 @@ function IssueManagementTable({ rows, removeIssue }) {
             REMOVE
           </Button>
         </div>
-      </DeleteDialog>
+      </ControlledDialog>
     );
   };
 

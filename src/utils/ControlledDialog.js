@@ -5,7 +5,7 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import React from "react";
 
-function DeleteDialog({ deleteButton, dialogTitle, children, dialogProps, open, setOpen }) {
+function DeleteDialog({ controlButton, dialogTitle, children, dialogProps, open, setOpen }) {
 
   const handleClose = () => {
     setOpen(false);
@@ -13,7 +13,7 @@ function DeleteDialog({ deleteButton, dialogTitle, children, dialogProps, open, 
 
   return (
     <>
-      {deleteButton}
+      {controlButton}
       <Dialog open={open} onClose={handleClose} {...dialogProps}>
         <DialogTitle>
           <Box

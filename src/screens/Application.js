@@ -1,20 +1,20 @@
-import ApplicationHeader from "components/application/ApplicationHeader";
 import ApplicationForm from "components/application/ApplicationForm";
-import "styles/Application.css";
-import React, { useState } from "react";
+import ApplicationHeader from "components/application/ApplicationHeader";
 import FactoryManagement from "components/application/factoryManagement/FactoryManagement";
 import IssueManagement from "components/application/issueManagement/IssueManagement";
+import React, { useState } from "react";
+import "styles/Application.css";
 
 function CreateApplication() {
-  const [selectedPlants, setSelectedPlants] = useState([]);
+  const [plants, setPlants] = useState([]);
   const [issues, setIssues] = useState([]);
 
   return (
     <div>
       <ApplicationHeader />
       <ApplicationForm />
-      <FactoryManagement selectedPlants={selectedPlants} setSelectedPlants={setSelectedPlants} />
-      <IssueManagement issues={issues} setIssues={setIssues} />
+      <FactoryManagement plants={plants} setPlants={setPlants} />
+      <IssueManagement plants={plants} issues={issues} setIssues={setIssues} />
     </div>
   );
 }

@@ -1,11 +1,8 @@
-import { Button } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import plantService from "service/plantService";
 import FactoryRow from "./FactoryRow";
 
-function FactoryOptions({ selectedPlants, setSelectedPlants }) {
-  const [plants, setPlants] = useState([]);
-
+function FactoryOptions({ plants, setPlants }) {
   useEffect(() => {
     plantService
       .getAll()

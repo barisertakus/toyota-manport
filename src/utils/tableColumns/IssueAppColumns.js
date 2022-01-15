@@ -5,8 +5,8 @@ export const getIssueAppColumns = [
     width : 230,
   },
   {
-    field : "impact",
-    headerName : "Impact",
+    field : "impactType",
+    headerName : "Impact Type",
     width : 230,
   },
   {

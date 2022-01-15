@@ -195,3 +195,13 @@
 	padding: 8px;
 	font-size: 16px;
 }
+
+.remove__buttons{
+	display: flex; 
+	margin-top: 20px;
+}
+
+.remove__buttons > button {
+	flex: 1;
+	margin-right: 20px;
+}

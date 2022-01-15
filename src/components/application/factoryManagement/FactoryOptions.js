@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import plantService from "service/plantService";
 import FactoryRow from "./FactoryRow";
 
@@ -8,7 +8,7 @@ function FactoryOptions({ plants, setPlants }) {
       .getAll()
       .then((response) => setPlants(addTractAndAliveToPlants(response.data)))
       .catch((error) => console.log(error));
-  }, []);
+  }, [setPlants]);
 
   const addTractAndAliveToPlants = (plants) => {
     return plants.map((plant) => ({ ...plant, track: false, alive: false }));
@@ -29,8 +29,6 @@ function FactoryOptions({ plants, setPlants }) {
       // ...plant and change field like -> alive : true
     );
   };
-
-  console.log(plants);
 
   return (
     <div className="country__management">

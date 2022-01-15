@@ -3,50 +3,10 @@ import { Button, Container, IconButton } from "@mui/material";
 import SimpleTable from "components/core/SimpleTable";
 import React, { useState } from "react";
 import { Switch } from "react-router-dom";
-import ControlledDialog from "utils/ControlledDialog";
 import { getIssueAppColumns } from "utils/tableColumns/IssueAppColumns";
+import DeleteAppIssue from "./actions/DeleteAppIssue";
 
 function IssueManagementTable({ rows, removeIssue }) {
-  const [open, setOpen] = useState(false);
-
-  const openDialog = () => {
-    setOpen(true);
-  };
-
-  const closeDialog = () => {
-    setOpen(false);
-  };
-
-  const removeIssueFromTable = (id) => {
-    removeIssue(id);
-    closeDialog();
-  }
-
-  const renderDialog = (id) => {
-    return (
-      <ControlledDialog
-        dialogTitle="Remove Issue"
-        open={open}
-        setOpen={setOpen}
-        dialogProps={{ maxWidth: "sm", fullWidth: true }}
-        controlButton={
-          <IconButton className="table__icon" onClick={openDialog}>
-            <DeleteOutlineOutlined />
-          </IconButton>
-        }
-      >
-        <div>Are you sure you want to remove the issue?</div>
-        <div className="remove__buttons">
-          <Button color="primary" variant="contained" onClick={closeDialog}>
-            CANCEL
-          </Button>
-          <Button color="error" variant="contained" onClick={()=>removeIssueFromTable(id)}>
-            REMOVE
-          </Button>
-        </div>
-      </ControlledDialog>
-    );
-  };
 
   const issueAppColumns = getIssueAppColumns.map((e, i) => ({
     ...e,
@@ -59,7 +19,7 @@ function IssueManagementTable({ rows, removeIssue }) {
           <IconButton className="table__icon">
             <Edit />
           </IconButton>
-          {renderDialog(params.row.id)}
+          <DeleteAppIssue id={params.row.id} removeIssue={removeIssue} />
           <Switch className="table__switch" />
         </div>
       ),

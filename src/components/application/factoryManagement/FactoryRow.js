@@ -1,22 +1,26 @@
 import { Checkbox, Switch } from '@mui/material'
 import React from 'react'
 
-function FactoryRow({name, checkState, switchState}) {
+function FactoryRow({plant, handleChange}) {
+
+	const {country, alive, track} = plant;
+
   return (
     <div className='country__row'>
       <div className="row__alive">
 				<Checkbox
-					name={name}
-					checked={checkState}
+					name={country}
+					checked={alive}
+					onChange={(e)=>handleChange(e,"alive")}
 				/>
-				<h3>{name}</h3>
+				<h3>{country}</h3>
 			</div>
 
 			<div className="row__track">
-				<Switch
-					name={name}
-					checked={switchState}
-					className="table__switch"
+				<Switch className="table__switch"
+					name={country}
+					checked={track}
+					onChange={(e)=>handleChange(e,"track")}
 				/>
 			</div>
     </div>

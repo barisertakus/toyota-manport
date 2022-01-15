@@ -10,7 +10,7 @@ import store from "app/store";
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <Router>
+      <Router basename="manport">
         <App />
       </Router>
     </Provider>

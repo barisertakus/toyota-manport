@@ -1,8 +1,9 @@
 import { Button } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { impactTypes, servers } from "utils/Enums";
-import AppIssueSelectRow from "./AppIssueSelectRow";
-import AppIssueTextRow from "./AppIssueTextRow";
+import AppDialogSelectRow from "../AppDialogSelectRow";
+import AppDialogTextRow from "../AppDialogTextRow";
+
 
 function CreateAppIssueForm({
   plants,
@@ -54,7 +55,7 @@ function CreateAppIssueForm({
   return (
     <div className="create__appIssue">
       <div className="appIssues">
-        <AppIssueSelectRow
+        <AppDialogSelectRow
           label="Country"
           name="country"
           disabled={disabled}
@@ -64,7 +65,7 @@ function CreateAppIssueForm({
           handleChange={handleChange}
         />
 
-        <AppIssueSelectRow
+        <AppDialogSelectRow
           label="Server"
           name="server"
           list={issue.country ? servers : []}
@@ -74,7 +75,7 @@ function CreateAppIssueForm({
           handleChange={handleChange}
         />
 
-        <AppIssueTextRow
+        <AppDialogTextRow
           name="issueType"
           label="Issue Type"
           value={issue.issueType}
@@ -83,7 +84,7 @@ function CreateAppIssueForm({
           disabled={disabled}
         />
 
-        <AppIssueSelectRow
+        <AppDialogSelectRow
           name="impactType"
           label="Impact Type"
           handleChange={handleChange}
@@ -92,7 +93,7 @@ function CreateAppIssueForm({
           disabled={disabled}
         />
 
-        <AppIssueTextRow
+        <AppDialogTextRow
           name="description"
           label="Description"
           handleChange={handleChange}

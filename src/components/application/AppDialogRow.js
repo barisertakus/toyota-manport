@@ -1,6 +1,6 @@
 import React from "react";
 
-function AppIssueRow({children, label}) {
+function AppDialogRow({children, label}) {
   return (
     <div className="appIssue">
       <h3>{label}:</h3>
@@ -9,4 +9,4 @@ function AppIssueRow({children, label}) {
   );
 }
 
-export default AppIssueRow;
+export default AppDialogRow;

@@ -1,10 +1,10 @@
 import { TextField } from "@mui/material";
 import React from "react";
-import AppIssueRow from "./AppIssueRow";
+import AppDialogRow from "./AppDialogRow";
 
-function AppIssueTextRow({ name, label, value, disabled, handleChange }) {
+function AppDialogTextRow({ name, label, value, disabled, handleChange }) {
   return (
-    <AppIssueRow label={label}>
+    <AppDialogRow label={label}>
       <TextField
         name={name}
         label={label}
@@ -14,8 +14,8 @@ function AppIssueTextRow({ name, label, value, disabled, handleChange }) {
         onChange={handleChange}
         fullWidth
       />
-    </AppIssueRow>
+    </AppDialogRow>
   );
 }
 
-export default AppIssueTextRow;
+export default AppDialogTextRow;

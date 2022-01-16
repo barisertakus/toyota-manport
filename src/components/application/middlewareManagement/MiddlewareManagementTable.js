@@ -11,7 +11,7 @@ function MiddlewareManagementTable({ rows, editInfra, removeInfra, plants }) {
     ...(e.field === "actions" && {
       renderCell: (params) => (
         <div>
-          <EditInfra editInfra={editInfra} infra={params.row} plants={plants} />
+          <EditInfra editInfra={editInfra} infra={params.row} plants={plants} rows={rows} />
           <DeleteInfra id={params.row.id} removeInfra={removeInfra} />
         </div>
       ),

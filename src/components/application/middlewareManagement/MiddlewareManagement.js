@@ -39,7 +39,11 @@ function MiddlewareManagement({ infrastructures, setInfrastructures, plants }) {
         removeInfra={removeInfrastructure}
         plants={plants}
       />
-      <CreateInfra addInfra={addInfrastructure} plants={plants} />
+      <CreateInfra
+        addInfra={addInfrastructure}
+        plants={plants}
+        infrastructures={infrastructures}
+      />
     </div>
   );
 }

@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import ControlledDialog from "utils/ControlledDialog";
 import CreateInfraForm from "../CreateInfraForm";
 
-function EditInfra({plants, editInfra, infra}) {
+function EditInfra({plants, editInfra, infra, rows}) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -24,6 +24,7 @@ function EditInfra({plants, editInfra, infra}) {
         setOpen={setOpen}
         editInfra={editInfra}
         oldInfra={infra}
+        infrastructures={rows}
       />
     </ControlledDialog>
   );

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ControlledFormDialog from "utils/ControlledFormDialog";
 import CreateInfraForm from "./CreateInfraForm";
 
-function CreateInfra({ plants, addInfra }) {
+function CreateInfra({ plants, addInfra, infrastructures }) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -14,7 +14,7 @@ function CreateInfra({ plants, addInfra }) {
         open={open}
         setOpen={setOpen}
       >
-        <CreateInfraForm setOpen={setOpen} addInfra={addInfra} plants={plants} />
+        <CreateInfraForm setOpen={setOpen} addInfra={addInfra} plants={plants} infrastructures={infrastructures} />
       </ControlledFormDialog>
     </div>
   );

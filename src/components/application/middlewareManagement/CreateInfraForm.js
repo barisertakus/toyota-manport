@@ -1,10 +1,19 @@
 import { Button } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { jdkVersions } from "utils/Enums";
+import VoidableSelect from "utils/VoidableSelect";
+import AppDialogRow from "../AppDialogRow";
 import AppDialogSelectRow from "../AppDialogSelectRow";
 import AppDialogTextRow from "../AppDialogTextRow";
 
-function CreateInfraForm({ plants, addInfra, editInfra, oldInfra, setOpen }) {
+function CreateInfraForm({
+  infrastructures,
+  plants,
+  addInfra,
+  editInfra,
+  oldInfra,
+  setOpen,
+}) {
   const [infra, setInfra] = useState({
     country: "",
     jdkVersion: "",
@@ -31,29 +40,36 @@ function CreateInfraForm({ plants, addInfra, editInfra, oldInfra, setOpen }) {
     //TODO contain check
     setCountries(
       plants
-        .filter((plant) => plant.alive)
+        .map((plant) =>
+          !infrastructures.some((infra) => infra.country === plant.country)
+            ? plant
+            : { ...plant, disable: true }
+        )
         .map((plant) => ({
           label: plant.country,
           value: plant.country,
+          disable: plant.disable,
         }))
     );
-  }, [plants]);
+  }, [plants, infrastructures]);
 
   useEffect(() => {
     if (oldInfra) setInfra(oldInfra);
   }, [oldInfra]);
 
   return (
-    <div className="create__appinfra">
-      <div className="appinfras">
-        <AppDialogSelectRow
-          label="Country"
-          name="country"
-          list={countries}
-          value={infra.country}
-          variant="outlined"
-          handleChange={handleChange}
-        />
+    <div className="create__infra">
+      <div className="infras">
+        <AppDialogRow label="Country">
+          <VoidableSelect
+            label="Country"
+            name="country"
+            list={countries}
+            value={infra.country}
+            variant="outlined"
+            handleChange={handleChange}
+          />
+        </AppDialogRow>
 
         <AppDialogSelectRow
           label="JDK Version"

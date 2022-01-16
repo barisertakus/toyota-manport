@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import ControlledDialog from "utils/ControlledDialog";
 import CreateAppIssueForm from "../CreateAppIssueForm";
 
-function EditAppIssue({plants, editIssue, oldIssue}) {
+function EditAppIssue({plants, editIssue, issue}) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -23,7 +23,7 @@ function EditAppIssue({plants, editIssue, oldIssue}) {
         plants={plants}
         setOpen={setOpen}
         editIssue={editIssue}
-        oldIssue={oldIssue}
+        oldIssue={issue}
       />
     </ControlledDialog>
   );

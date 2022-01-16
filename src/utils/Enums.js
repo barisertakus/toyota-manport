@@ -119,3 +119,14 @@ export const servers = [
   { value: "Prod-1", label: "Prod-1" },
   { value: "Prod-2", label: "Prod-2" },
 ];
+
+export const jdkVersions = [
+  { value: "8", label : "8"},
+  { value: "11", label : "11"},
+  { value: "12", label : "12"},
+  { value: "13", label : "13"},
+  { value: "14", label : "14"},
+  { value: "15", label : "15"},
+  { value: "16", label : "16"},
+  { value: "17", label : "17"},
+]

@@ -1,23 +1,23 @@
 import React, { useState } from "react";
 import ControlledFormDialog from "utils/ControlledFormDialog";
-import CreateAppIssueForm from "./CreateAppIssueForm";
+import CreateInfraForm from "./CreateInfraForm";
 
-function CreateAppIssue({plants, addIssue}) {
+function CreateInfra({ plants, addInfra }) {
   const [open, setOpen] = useState(false);
 
   return (
     <div className="create__appDialog-btn">
       <ControlledFormDialog
-        dialogTitle="Add New Issue"
-        btnText="Add New Issue"
+        dialogTitle="Add New Infrastracture"
+        btnText="Add New Infra"
         dialogProps={{ fullWidth: true, maxWidth: "sm" }}
         open={open}
         setOpen={setOpen}
       >
-        <CreateAppIssueForm plants={plants} setOpen={setOpen} addIssue={addIssue} />
+        <CreateInfraForm setOpen={setOpen} addInfra={addInfra} plants={plants} />
       </ControlledFormDialog>
     </div>
   );
 }
 
-export default CreateAppIssue;
+export default CreateInfra;

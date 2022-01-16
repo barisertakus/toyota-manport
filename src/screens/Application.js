@@ -37,8 +37,9 @@ function Application() {
       />
       <IssueManagement issues={issues} setIssues={setIssues} plants={plants} />
       <MiddlewareManagement
-        infrastractures={infrastructures}
+        infrastructures={infrastructures}
         setInfrastructures={setInfrastructures}
+        plants={plants}
       />
     </div>
   );

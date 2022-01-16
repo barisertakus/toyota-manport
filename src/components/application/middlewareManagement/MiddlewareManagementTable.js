@@ -1,17 +1,17 @@
 import { Container } from "@mui/material";
 import SimpleTable from "components/core/SimpleTable";
 import React from "react";
-import { getMiddlewareManagementColumns } from "utils/tableColumns/MiddlewareManagementColumns";
+import { getMiddlewareManagementColumns as getColumns } from "utils/tableColumns/MiddlewareManagementColumns";
 
 function MiddlewareManagementTable({ rows }) {
-  const middlewareManagementColumns = getMiddlewareManagementColumns.map((e, i) => ({
+  const middlewareManagementColumns = getColumns.map((e, i) => ({
     ...e,
     ...(e.field === "actions" && {
-      renderCell: (params) => params,
+      // renderCell: (params) => params.row,
       renderHeader: () => (
         <div className="management__actions">
           <div>Actions</div>
-          <div>View | Edit | Delete | Track</div>
+          <div>Edit | Delete</div>
         </div>
       ),
     }),

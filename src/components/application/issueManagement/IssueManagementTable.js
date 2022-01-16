@@ -1,24 +1,20 @@
-import { DeleteOutlineOutlined, Edit, Visibility } from "@mui/icons-material";
-import { Button, Container, IconButton } from "@mui/material";
+import { Container, Switch } from "@mui/material";
 import SimpleTable from "components/core/SimpleTable";
-import React, { useState } from "react";
-import { Switch } from "react-router-dom";
+import React from "react";
 import { getIssueAppColumns } from "utils/tableColumns/IssueAppColumns";
 import DeleteAppIssue from "./actions/DeleteAppIssue";
+import EditAppIssue from "./actions/EditAppIssue";
+import ViewAppIssue from "./actions/ViewAppIssue";
 
-function IssueManagementTable({ rows, removeIssue }) {
+function IssueManagementTable({ rows, removeIssue, editIssue, plants }) {
 
   const issueAppColumns = getIssueAppColumns.map((e, i) => ({
     ...e,
     ...(e.field === "actions" && {
       renderCell: (params) => (
         <div>
-          <IconButton className="table__icon">
-            <Visibility />
-          </IconButton>
-          <IconButton className="table__icon">
-            <Edit />
-          </IconButton>
+          <ViewAppIssue oldIssue={params.row} plants={plants} />
+          <EditAppIssue editIssue={editIssue} plants={plants} oldIssue={params.row} />
           <DeleteAppIssue id={params.row.id} removeIssue={removeIssue} />
           <Switch className="table__switch" />
         </div>

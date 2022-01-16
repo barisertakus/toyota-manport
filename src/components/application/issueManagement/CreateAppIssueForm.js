@@ -4,7 +4,14 @@ import { impactTypes, servers } from "utils/Enums";
 import AppIssueSelectRow from "./AppIssueSelectRow";
 import AppIssueTextRow from "./AppIssueTextRow";
 
-function CreateAppIssueForm({ plants, addIssue, setOpen }) {
+function CreateAppIssueForm({
+  plants,
+  addIssue,
+  editIssue,
+  oldIssue,
+  setOpen,
+  disabled,
+}) {
   const [issue, setIssue] = useState({
     issueType: "",
     impactType: "",
@@ -20,9 +27,13 @@ function CreateAppIssueForm({ plants, addIssue, setOpen }) {
   };
 
   const handleSave = () => {
-    addIssue(issue);
+    if (editIssue) {
+      editIssue(issue);
+    } else {
+      addIssue(issue);
+    }
     setOpen(false);
-  }
+  };
 
   useEffect(() => {
     setCountries(
@@ -34,6 +45,10 @@ function CreateAppIssueForm({ plants, addIssue, setOpen }) {
         }))
     );
   }, [plants]);
+
+  useEffect(() => {
+    if (oldIssue) setIssue(oldIssue);
+  }, [oldIssue]);
 
   return (
     <div className="create__appIssue">
@@ -86,13 +101,17 @@ function CreateAppIssueForm({ plants, addIssue, setOpen }) {
         />
       </div>
       <div className="add-btn">
-        <Button
-          variant="contained"
-          onClick={handleSave}
-          // disabled={props.disabled}
-        >
-          Add Issue
-        </Button>
+        {!disabled ? (
+          <Button
+            variant="contained"
+            onClick={handleSave}
+            // disabled={props.disabled}
+          >
+            {editIssue ? "Edit Issue" : "Add Issue"}
+          </Button>
+        ) : (
+          <></>
+        )}
       </div>
     </div>
   );

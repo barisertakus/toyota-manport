@@ -18,6 +18,7 @@ function CreateAppIssueForm({
     country: "",
     server: "",
     description: "",
+    track: false,
   });
 
   const [countries, setCountries] = useState([]);
@@ -56,7 +57,7 @@ function CreateAppIssueForm({
         <AppIssueSelectRow
           label="Country"
           name="country"
-          disabled
+          disabled={disabled}
           list={countries}
           value={issue.country}
           variant="outlined"
@@ -67,7 +68,7 @@ function CreateAppIssueForm({
           label="Server"
           name="server"
           list={issue.country ? servers : []}
-          disabled
+          disabled={disabled}
           value={issue.server}
           variant="outlined"
           handleChange={handleChange}
@@ -79,7 +80,7 @@ function CreateAppIssueForm({
           value={issue.issueType}
           variant="outlined"
           handleChange={handleChange}
-          // disabled={props.disabled}
+          disabled={disabled}
         />
 
         <AppIssueSelectRow
@@ -88,7 +89,7 @@ function CreateAppIssueForm({
           handleChange={handleChange}
           list={impactTypes}
           value={issue.impactType}
-          // disabled={props.disabled}
+          disabled={disabled}
         />
 
         <AppIssueTextRow
@@ -97,7 +98,7 @@ function CreateAppIssueForm({
           handleChange={handleChange}
           value={issue.description}
           variant="outlined"
-          // disabled={props.disabled}
+          disabled={disabled}
         />
       </div>
       <div className="add-btn">

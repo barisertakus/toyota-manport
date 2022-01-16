@@ -1,9 +1,9 @@
 import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 import React from "react";
 
-function CustomSelect({ name, value, label, list, handleChange }) {
+function CustomSelect({ name, value, label, list, handleChange, disabled }) {
   return (
-    <FormControl fullWidth>
+    <FormControl fullWidth disabled={disabled}>
       <InputLabel id="demo-simple-select-label">{label}</InputLabel>
       <Select name={name} value={value} label={label} onChange={handleChange}>
         {list.map((item,i) => (

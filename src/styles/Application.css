@@ -1,6 +1,7 @@
 .application__more,
 .factory__management,
-.issue__management{
+.issue__management,
+.middleware__management{
 	margin: 20px 20px;
 }
 

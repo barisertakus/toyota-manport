@@ -1,9 +1,16 @@
-import React from "react";
+import { Collapse } from "@mui/material";
+import React, { useState } from "react";
 import ApplicationDetailHeader from "../ApplicationDetailHeader";
 import CreateInfra from "./CreateInfra";
 import MiddlewareManagementTable from "./MiddlewareManagementTable";
 
 function MiddlewareManagement({ infrastructures, setInfrastructures, plants }) {
+  const [collapseIn, setCollapseIn] = useState(true);
+
+  const toggleCollapse = () => {
+    setCollapseIn((collapseIn) => !collapseIn);
+  };
+
   const addInfrastructure = (infrastructure) => {
     console.log(infrastructure);
     setInfrastructures([
@@ -32,18 +39,23 @@ function MiddlewareManagement({ infrastructures, setInfrastructures, plants }) {
 
   return (
     <div className="middleware__management">
-      <ApplicationDetailHeader name="Middleware Management" />
-      <MiddlewareManagementTable
-        rows={infrastructures}
-        editInfra={editInfrastructure}
-        removeInfra={removeInfrastructure}
-        plants={plants}
+      <ApplicationDetailHeader
+        name="Middleware Management"
+        handleClick={toggleCollapse}
       />
-      <CreateInfra
-        addInfra={addInfrastructure}
-        plants={plants}
-        infrastructures={infrastructures}
-      />
+      <Collapse in={collapseIn}>
+        <MiddlewareManagementTable
+          rows={infrastructures}
+          editInfra={editInfrastructure}
+          removeInfra={removeInfrastructure}
+          plants={plants}
+        />
+        <CreateInfra
+          addInfra={addInfrastructure}
+          plants={plants}
+          infrastructures={infrastructures}
+        />
+      </Collapse>
     </div>
   );
 }

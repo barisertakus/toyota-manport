@@ -1,5 +1,4 @@
 import ApplicationDetails from "components/application/ApplicationDetails";
-import ApplicationForm from "components/application/ApplicationForm";
 import ApplicationHeader from "components/application/ApplicationHeader";
 import FactoryManagement from "components/application/factoryManagement/FactoryManagement";
 import IssueManagement from "components/application/issueManagement/IssueManagement";

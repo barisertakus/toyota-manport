@@ -12,7 +12,7 @@ function ApplicationDetails() {
 
   return (
     <div className="application__form">
-      <ApplicationDetailHeader name="Details" handleClick={toggleCollapse} />
+      <ApplicationDetailHeader name="Details" handleClick={toggleCollapse} open={collapseIn} />
       <Collapse in={collapseIn}>
         <ApplicationForm />
       </Collapse>

@@ -1,7 +1,7 @@
-import { ExpandMore } from "@mui/icons-material";
+import { ExpandLess, ExpandMore } from "@mui/icons-material";
 import React from "react";
 
-function ApplicationDetailHeader({name, handleClick}) {
+function ApplicationDetailHeader({name, handleClick, open}) {
 
   const handleDivClick = () => {
     if(!!handleClick)
@@ -13,7 +13,7 @@ function ApplicationDetailHeader({name, handleClick}) {
       <h1>{name}</h1>
       <div className="link__expand">
         <hr />
-        <ExpandMore />
+        {open ? <ExpandMore /> : <ExpandLess />}
       </div>
     </div>
   );

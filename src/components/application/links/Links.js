@@ -13,7 +13,7 @@ function Links({ plants }) {
 
   return (
     <div className="links">
-      <ApplicationDetailHeader name="Links" handleClick={toggleCollapse} />
+      <ApplicationDetailHeader name="Links" handleClick={toggleCollapse} open={collapseIn} />
       <Collapse in={collapseIn}>
         <LinkDetails plants={plants} />
       </Collapse>

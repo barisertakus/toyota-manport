@@ -42,6 +42,7 @@ function MiddlewareManagement({ infrastructures, setInfrastructures, plants }) {
       <ApplicationDetailHeader
         name="Middleware Management"
         handleClick={toggleCollapse}
+        open={collapseIn}
       />
       <Collapse in={collapseIn}>
         <MiddlewareManagementTable

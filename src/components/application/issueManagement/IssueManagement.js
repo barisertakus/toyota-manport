@@ -30,6 +30,7 @@ function IssueManagement({ issues, setIssues, plants }) {
       <ApplicationDetailHeader
         name="Issue Management"
         handleClick={toggleCollapse}
+        open={collapseIn}
       />
       <Collapse in={collapseIn}>
         <IssueManagementTable

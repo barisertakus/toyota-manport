@@ -3,8 +3,12 @@ import React, { useState } from "react";
 import ApplicationDetailHeader from "../ApplicationDetailHeader";
 import FactoryOptions from "./FactoryOptions";
 
-function FactoryManagement({plants, setPlants, getIssuesInCountry, deleteIssues}) {
-
+function FactoryManagement({
+  plants,
+  setPlants,
+  getIssuesInCountry,
+  deleteIssues,
+}) {
   const [collapseIn, setCollapseIn] = useState(true);
 
   const toggleCollapse = () => {
@@ -13,7 +17,11 @@ function FactoryManagement({plants, setPlants, getIssuesInCountry, deleteIssues}
 
   return (
     <div className="factory__management">
-      <ApplicationDetailHeader name="Factory Management" handleClick={toggleCollapse} />
+      <ApplicationDetailHeader
+        name="Factory Management"
+        handleClick={toggleCollapse}
+        open={collapseIn}
+      />
       <Collapse in={collapseIn}>
         <FactoryOptions
           plants={plants}

@@ -1,15 +1,24 @@
-import { ExpandMore } from "@mui/icons-material";
-import React from "react";
+import { ExpandLess, ExpandMore } from "@mui/icons-material";
+import { Collapse } from "@mui/material";
+import React, { useState } from "react";
 
-function LinkRow({ name, children }) {
+function LinkRow({ name, children, open }) {
+  const [collapseIn, setCollapseIn] = useState(open || false);
+
+  const toggleCollapse = () => {
+    setCollapseIn((collapseIn) => !collapseIn);
+  };
+
+  console.log(name, "calisti");
+
   return (
     <div className="link__row">
-      <h2>{name}</h2>
+      <h2 className="link__header" onClick={toggleCollapse}>{name}</h2>
       <div className="link__expand">
         <hr />
-        <ExpandMore />
+        {collapseIn ? <ExpandMore /> : <ExpandLess />}
       </div>
-      {children}
+      <Collapse in={collapseIn}>{children}</Collapse>
     </div>
   );
 }

@@ -1,0 +1,83 @@
+.links {
+	/* margin-right: 30px; */
+	margin-top: 30px !important;
+}
+.link {
+	margin-left: 40px;
+}
+
+/* .link:hover{
+ cursor: pointer;
+} */
+
+
+.server__details {
+	display: flex;
+}
+
+.server__details h5 {
+	font-weight: normal;
+  margin-bottom: 5px;
+}
+
+.server__details > .server__properties {
+	margin-left: 20px;
+}
+
+.link__expand {
+	padding-top: 5px;
+	display: flex;
+}
+.link__expand > hr {
+	border: none;
+	border-bottom: 2px solid black;
+	flex-grow: 1;
+	height: 0px;
+}
+
+.link__expand > svg {
+	position: relative;
+	top: -9px;
+}
+
+@media screen and (max-width: 800px) {
+  .link{
+		margin-left: 0px;
+	}
+	.links{
+		margin-left: 20px;
+	}
+}
+
+.link__row{
+	margin-left: 30px;
+}
+
+.server__linkRow {
+	display: flex;
+	align-items: center;
+	margin-bottom: 5px;
+	margin-left: 30px;
+}
+
+.server__linkRow > h6,
+.server__linkRow input{
+	font-size: 14px;
+	font-weight: normal;
+}
+
+.server__linkRow input{
+	padding: 0;
+}
+
+.server__linkRow > h6 {
+	min-width: 120px;
+}
+
+.applicationServer__links{
+	margin-bottom: 20px;
+}
+
+.server__links{
+	margin-bottom: 20px;
+}

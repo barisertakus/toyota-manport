@@ -9,7 +9,7 @@ function ServerLinkRow({ header, name, value, handleChange }) {
         variant="standard"
         name={name}
         value={value}
-        handleChange={handleChange}
+        onChange={handleChange}
       />
     </div>
   );

@@ -30,7 +30,7 @@ function Application() {
     <div>
       <ApplicationHeader />
       <ApplicationDetails />
-      <Links />
+      <Links plants={plants} />
       <FactoryManagement
         plants={plants}
         setPlants={setPlants}

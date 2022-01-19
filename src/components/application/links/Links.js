@@ -1,15 +1,22 @@
-import React from "react";
+import { Collapse } from "@mui/material";
+import React, { useState } from "react";
 import "styles/Links.css";
 import ApplicationDetailHeader from "../ApplicationDetailHeader";
 import LinkDetails from "./LinkDetails";
 
-const mockPlants = [{ country: "Turkey" }, { country: "England" }];
+function Links({ plants }) {
+  const [collapseIn, setCollapseIn] = useState(false);
 
-function Links() {
+  const toggleCollapse = () => {
+    setCollapseIn((collapseIn) => !collapseIn);
+  };
+
   return (
     <div className="links">
-      <ApplicationDetailHeader name="Links" />
-      <LinkDetails plants={mockPlants} />
+      <ApplicationDetailHeader name="Links" handleClick={toggleCollapse} />
+      <Collapse in={collapseIn}>
+        <LinkDetails plants={plants} />
+      </Collapse>
     </div>
   );
 }

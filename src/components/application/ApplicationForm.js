@@ -31,15 +31,7 @@ function ApplicationForm() {
   };
 
   return (
-    <div className="application__form">
-      <div className="form__header">
-        <h1>Details</h1>
-        <div className="link__expand">
-          <hr />
-          <ExpandMore />
-        </div>
-      </div>
-
+  
       <div className="application__details">
         <div className="application__detail">
           <div className="application__headers">
@@ -157,7 +149,7 @@ function ApplicationForm() {
           </div>
         </div>
       </div>
-    </div>
+ 
   );
 }
 

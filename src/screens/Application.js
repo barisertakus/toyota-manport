@@ -1,7 +1,9 @@
+import ApplicationDetails from "components/application/ApplicationDetails";
 import ApplicationForm from "components/application/ApplicationForm";
 import ApplicationHeader from "components/application/ApplicationHeader";
 import FactoryManagement from "components/application/factoryManagement/FactoryManagement";
 import IssueManagement from "components/application/issueManagement/IssueManagement";
+import Links from "components/application/links/Links";
 import MiddlewareManagement from "components/application/middlewareManagement/MiddlewareManagement";
 import React, { useState } from "react";
 import "styles/Application.css";
@@ -28,7 +30,8 @@ function Application() {
   return (
     <div>
       <ApplicationHeader />
-      <ApplicationForm />
+      <ApplicationDetails />
+      <Links />
       <FactoryManagement
         plants={plants}
         setPlants={setPlants}

@@ -1,7 +1,8 @@
 .application__more,
 .factory__management,
 .issue__management,
-.middleware__management{
+.middleware__management,
+.links{
 	margin: 20px 20px;
 }
 

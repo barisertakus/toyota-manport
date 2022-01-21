@@ -9,8 +9,6 @@ function LinkRow({ name, children, open }) {
     setCollapseIn((collapseIn) => !collapseIn);
   };
 
-  console.log(name, "calisti");
-
   return (
     <div className="link__row">
       <h2 className="link__header" onClick={toggleCollapse}>{name}</h2>

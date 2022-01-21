@@ -1,16 +1,20 @@
+import { Button } from "@mui/material";
 import ApplicationDetails from "components/application/ApplicationDetails";
 import ApplicationHeader from "components/application/ApplicationHeader";
 import FactoryManagement from "components/application/factoryManagement/FactoryManagement";
 import IssueManagement from "components/application/issueManagement/IssueManagement";
 import Links from "components/application/links/Links";
 import MiddlewareManagement from "components/application/middlewareManagement/MiddlewareManagement";
-import React, { useState } from "react";
+import React, { createRef, useState } from "react";
 import "styles/Application.css";
 
 function Application() {
   const [plants, setPlants] = useState([]);
   const [issues, setIssues] = useState([]);
   const [infrastructures, setInfrastructures] = useState([]);
+
+  const applicationDetailsRef = createRef();
+  const linksRef = createRef();
 
   const getIssuesInCountry = (country) => {
     const contains = issues.filter((issue) => issue.country === country);
@@ -26,11 +30,13 @@ function Application() {
     );
   };
 
+  const handleSave = () => {};
+
   return (
     <div>
-      <ApplicationHeader />
-      <ApplicationDetails />
-      <Links plants={plants} />
+      <ApplicationHeader handleSave={handleSave} />
+      <ApplicationDetails applicationDetailsRef={applicationDetailsRef} />
+      <Links plants={plants} linksRef={linksRef} />
       <FactoryManagement
         plants={plants}
         setPlants={setPlants}

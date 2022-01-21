@@ -15,7 +15,7 @@ function Links({ plants, linksRef }) {
     <div className="links">
       <ApplicationDetailHeader name="Links" handleClick={toggleCollapse} open={collapseIn} />
       <Collapse in={collapseIn}>
-        <LinkDetails plants={plants} linksRef={linksRef} />
+        <LinkDetails plants={plants} ref={linksRef} />
       </Collapse>
     </div>
   );

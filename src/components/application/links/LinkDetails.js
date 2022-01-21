@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { forwardRef, useEffect, useImperativeHandle, useState } from "react";
 import LinkRow from "./LinkRow";
 import ServerLinks from "./ServerLinks";
 
-function LinkDetails({ plants, linksRef }) {
+const LinkDetails = forwardRef(({ plants }, ref) => {
   const [countries, setCountries] = useState([]);
   const [links, setLinks] = useState([]);
 
@@ -62,6 +62,10 @@ function LinkDetails({ plants, linksRef }) {
     );
   }, [plants]);
 
+  useImperativeHandle(ref, () => ({
+    links: links,
+  }));
+
   return (
     <div className="link__details">
       <LinkRow name="Node Specific Links">
@@ -92,6 +96,6 @@ function LinkDetails({ plants, linksRef }) {
       </LinkRow>
     </div>
   );
-}
+})
 
 export default LinkDetails;

@@ -7,6 +7,7 @@ function ApplicationManagement() {
   return (
     <div className="management">
       <AppManagementHeader />
+      <h3 className="header__name">Application Management</h3>
       <AppManagementTable />
     </div>
   );

@@ -1,15 +1,15 @@
 import { Checkbox, TextField } from "@mui/material";
-import React, { useState } from "react";
+import React, { forwardRef, useImperativeHandle, useState } from "react";
 import CustomSelect from "utils/CustomSelect";
 import {
   backends,
   businessAreaTypes,
   databases,
   frontends,
-  responsibleTeams
+  responsibleTeams,
 } from "utils/Enums";
 
-function ApplicationForm() {
+const ApplicationForm = forwardRef((_, ref) => {
   const [application, setApplication] = useState({
     shortName: "",
     releaseDate: "",
@@ -28,6 +28,10 @@ function ApplicationForm() {
   const handleChange = (event) => {
     setApplication({ ...application, [event.target.name]: event.target.value });
   };
+
+  useImperativeHandle(ref, () => ({
+    application: application,
+  }));
 
   return (
     <div className="application__details">
@@ -148,6 +152,6 @@ function ApplicationForm() {
       </div>
     </div>
   );
-}
+});
 
 export default ApplicationForm;

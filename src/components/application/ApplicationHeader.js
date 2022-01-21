@@ -2,13 +2,13 @@ import { Button } from "@mui/material";
 import Header from "components/core/Header/Header";
 import React from "react";
 
-function ApplicationHeader() {
+function ApplicationHeader({handleSave}) {
   return (
     <Header>
       <div className="header__button blue__button">
         <Button
           // disabled={disabled}
-          onClick={() => console.log("save")}
+          onClick={handleSave}
           variant="contained"
         >
           Add New App {/* Edit New App */}

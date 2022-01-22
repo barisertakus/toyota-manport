@@ -12,17 +12,23 @@ function IssueManagement({ issues, setIssues, plants }) {
   };
 
   const addIssue = (issue) => {
-    setIssues([...issues, { ...issue, id: issues.length + 1 }]);
+    setIssues([...issues, { ...issue, orderNo: issues.length + 1 }]);
   };
 
   const editIssue = (issueEdit) => {
     setIssues(
-      issues.map((issue) => (issue.id !== issueEdit.id ? issue : issueEdit))
+      issues.map((issue) =>
+        issue.orderNo !== issueEdit.orderNo ? issue : issueEdit
+      )
     );
   };
 
-  const removeIssue = (issueId) => {
-    setIssues(issues.filter((issue) => issue.id !== issueId));
+  const removeIssue = (issueOrderNo) => {
+    setIssues(
+      issues
+        .filter((issue) => issue.orderNo !== issueOrderNo)
+        .map((issue, i) => ({ ...issue, orderNo: i+1 }))
+    );
   };
 
   return (

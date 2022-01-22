@@ -3,12 +3,12 @@ import { Button, IconButton } from '@mui/material';
 import React, { useState } from 'react'
 import ControlledDialog from "utils/ControlledDialog";
 
-function DeleteAppIssue({removeIssue, id}) {
+function DeleteAppIssue({removeIssue, orderNo}) {
 
   const [open, setOpen] = useState(false);
 
   const handleRemove = () => {
-    removeIssue(id);
+    removeIssue(orderNo);
     setOpen(false);
   }
 

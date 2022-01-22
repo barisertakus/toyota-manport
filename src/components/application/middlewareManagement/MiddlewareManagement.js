@@ -12,7 +12,6 @@ function MiddlewareManagement({ infrastructures, setInfrastructures, plants }) {
   };
 
   const addInfrastructure = (infrastructure) => {
-    console.log(infrastructure);
     setInfrastructures([
       ...infrastructures,
       { ...infrastructure, id: infrastructures.length + 1 },

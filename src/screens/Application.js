@@ -23,14 +23,26 @@ function Application() {
 
   const deleteIssues = (issueList) => {
     setIssues(
-      issues.filter(
-        // if issue is in the removeList, delete it
-        (issue) => !issueList.some((remove) => remove.id === issue.id)
-      )
+      issues
+        .filter(
+          // if issue is in the removeList, delete it
+          (issue) =>
+            !issueList.some((remove) => remove.orderNo === issue.orderNo)
+        )
+        .map((issue, i) => ({ ...issue, orderNo: i + 1 }))
     );
   };
 
-  const handleSave = () => {};
+  const handleSave = () => {
+    const plantsSave = plants.filter((plant) => plant.alive);
+
+    console.log({
+      ...applicationDetailsRef.current.application,
+      plants: plantsSave,
+      issues: issues,
+      links: linksRef.current.links,
+    });
+  };
 
   return (
     <div>

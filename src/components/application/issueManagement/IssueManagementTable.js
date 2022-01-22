@@ -17,7 +17,7 @@ function IssueManagementTable({ rows, removeIssue, editIssue, plants }) {
           <div>
             <ViewAppIssue oldIssue={row} plants={plants} />
             <EditAppIssue editIssue={editIssue} plants={plants} issue={row} />
-            <DeleteAppIssue id={row.id} removeIssue={removeIssue} />
+            <DeleteAppIssue orderNo={row.orderNo} removeIssue={removeIssue} />
             <TrackAppIssue editIssue={editIssue} issue={row} />
           </div>
         );
@@ -33,7 +33,7 @@ function IssueManagementTable({ rows, removeIssue, editIssue, plants }) {
 
   return (
     <Container>
-      <SimpleTable columns={issueAppColumns} rows={rows} />
+      <SimpleTable columns={issueAppColumns} rows={rows} getRowId={((row)=> row.orderNo)} />
     </Container>
   );
 }

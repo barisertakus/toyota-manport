@@ -1,5 +1,12 @@
 export const getIssueAppColumns = [
   {
+    field : "orderNo",
+    headerName : "Order No",
+    width : 100,
+    identity : true,
+    hide : false,
+  },
+  {
     field : "issueType",
     headerName : "Issue Type",
     width : 230,

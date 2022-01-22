@@ -1,7 +1,7 @@
 import { DataGrid } from "@mui/x-data-grid";
 import React, { forwardRef, useState } from "react";
 
-const SimpleTable = forwardRef(({ rows, columns }, ref) => {
+const SimpleTable = forwardRef(({ rows, columns, ...props }, ref) => {
   const [pageSize, setPageSize] = useState(10);
 
   const handlePageSizeChange = (pageSize) => {
@@ -20,6 +20,7 @@ const SimpleTable = forwardRef(({ rows, columns }, ref) => {
         pageSize={pageSize}
         onPageSizeChange={handlePageSizeChange}
         rowsPerPageOptions={[2, 5, 10, 20, 50, 100]}
+        {...props}
       />
     </div>
   );

@@ -11,8 +11,13 @@ function MiddlewareManagementTable({ rows, editInfra, removeInfra, plants }) {
     ...(e.field === "actions" && {
       renderCell: (params) => (
         <div>
-          <EditInfra editInfra={editInfra} infra={params.row} plants={plants} rows={rows} />
-          <DeleteInfra id={params.row.id} removeInfra={removeInfra} />
+          <EditInfra
+            editInfra={editInfra}
+            infra={params.row}
+            plants={plants}
+            rows={rows}
+          />
+          <DeleteInfra orderNo={params.row.orderNo} removeInfra={removeInfra} />
         </div>
       ),
       renderHeader: () => (
@@ -26,7 +31,11 @@ function MiddlewareManagementTable({ rows, editInfra, removeInfra, plants }) {
 
   return (
     <Container>
-      <SimpleTable columns={middlewareManagementColumns} rows={rows} />
+      <SimpleTable
+        columns={middlewareManagementColumns}
+        rows={rows}
+        getRowId={(row) => row.orderNo}
+      />
     </Container>
   );
 }

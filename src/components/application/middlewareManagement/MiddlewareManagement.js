@@ -14,14 +14,14 @@ function MiddlewareManagement({ infrastructures, setInfrastructures, plants }) {
   const addInfrastructure = (infrastructure) => {
     setInfrastructures([
       ...infrastructures,
-      { ...infrastructure, id: infrastructures.length + 1 },
+      { ...infrastructure, orderNo: infrastructures.length + 1 },
     ]);
   };
 
   const editInfrastructure = (infrastructureEdit) => {
     setInfrastructures(
       infrastructures.map((infrastructure) =>
-        infrastructure.id !== infrastructureEdit.id
+        infrastructure.orderNo !== infrastructureEdit.orderNo
           ? infrastructure
           : infrastructureEdit
       )
@@ -30,9 +30,9 @@ function MiddlewareManagement({ infrastructures, setInfrastructures, plants }) {
 
   const removeInfrastructure = (infrastructureId) => {
     setInfrastructures(
-      infrastructures.filter(
-        (infrastructure) => infrastructure.id !== infrastructureId
-      )
+      infrastructures
+        .filter((infrastructure) => infrastructure.orderNo !== infrastructureId)
+        .map((infrastructure, i) => ({ ...infrastructure, orderNo: i + 1 }))
     );
   };
 

@@ -3,12 +3,12 @@ import { Button, IconButton } from '@mui/material';
 import React, { useState } from 'react'
 import ControlledDialog from "utils/ControlledDialog";
 
-function DeleteInfra({removeInfra, id}) {
+function DeleteInfra({removeInfra, orderNo}) {
 
   const [open, setOpen] = useState(false);
 
   const handleRemove = () => {
-    removeInfra(id);
+    removeInfra(orderNo);
     setOpen(false);
   }
 

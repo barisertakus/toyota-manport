@@ -33,7 +33,7 @@ const applicationColumns = getAppManagementColumns.map((e, i) => ({
 function AppManagementTable() {
   return (
     <Container style={{ marginBottom: 20, marginTop: 50 }}>
-      <Table columns={applicationColumns} url="api/plant/getAll" />
+      <Table columns={applicationColumns} url="api/application/getAll" />
     </Container>
   );
 }

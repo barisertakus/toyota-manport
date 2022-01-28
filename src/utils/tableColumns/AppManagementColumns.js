@@ -12,22 +12,17 @@ export const getAppManagementColumns = [
   {
     field: "livePlants",
     headerName: "Live Plants",
-    width: 130,
-  },
-  {
-    field: "liveAppCount",
-    headerName: "Live App Count",
-    width: 130,
+    width: 175,
   },
   {
     field: "lineStopRisk",
     headerName: "Line Stop Risk",
-    width: 130,
+    width: 175,
   },
   {
     field: "actions",
     headerName: "Actions",
-    width: 250,
+    width: 300,
     align: "center",
     sortable: false,
   },

@@ -7,6 +7,8 @@ import Links from "components/application/links/Links";
 import MiddlewareManagement from "components/application/middlewareManagement/MiddlewareManagement";
 import React, { createRef, useState } from "react";
 import "styles/Application.css";
+import api from "helpers/api";
+import applicationService from "service/applicationService";
 
 function Application() {
   const [plants, setPlants] = useState([]);
@@ -42,6 +44,16 @@ function Application() {
       issues: issues,
       links: linksRef.current.links,
     });
+
+    applicationService
+      .addApplication("api/application/save", {
+        ...applicationDetailsRef.current.application,
+        plants: plantsSave,
+        issues: issues,
+        links: linksRef.current.links,
+        infrastructures: infrastructures,
+      })
+      .then((response) => console.log(response));
   };
 
   return (

@@ -1,6 +1,6 @@
 import { Button } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import { impactTypes, servers } from "utils/Enums";
+import { impactTypes } from "utils/Enums";
 import AppDialogSelectRow from "../AppDialogSelectRow";
 import AppDialogTextRow from "../AppDialogTextRow";
 
@@ -17,7 +17,6 @@ function CreateAppIssueForm({
     issueType: "",
     impactType: "",
     country: "",
-    server: "",
     description: "",
     track: false,
   });
@@ -61,16 +60,6 @@ function CreateAppIssueForm({
           disabled={disabled}
           list={countries}
           value={issue.country}
-          variant="outlined"
-          handleChange={handleChange}
-        />
-
-        <AppDialogSelectRow
-          label="Server"
-          name="server"
-          list={issue.country ? servers : []}
-          disabled={disabled}
-          value={issue.server}
           variant="outlined"
           handleChange={handleChange}
         />

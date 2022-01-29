@@ -35,18 +35,13 @@ function Application() {
     );
   };
 
+  // const check
+
   const handleSave = () => {
     const plantsSave = plants.filter((plant) => plant.alive);
 
-    console.log({
-      ...applicationDetailsRef.current.application,
-      plants: plantsSave,
-      issues: issues,
-      links: linksRef.current.links,
-    });
-
     applicationService
-      .addApplication("api/application/save", {
+      .addApplication({
         ...applicationDetailsRef.current.application,
         plants: plantsSave,
         issues: issues,

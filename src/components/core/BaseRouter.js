@@ -10,6 +10,7 @@ import Login from "screens/Login";
 import Plants from "screens/Plants";
 import SignUp from "screens/Signup";
 import PrivateRoute from "./PrivateRoute";
+import Dashboard from "screens/Dashboard";
 
 function BaseRouter() {
   const dispatch = useDispatch();
@@ -24,6 +25,7 @@ function BaseRouter() {
       <Route path="/signup" component={SignUp} />
       <Route path="/login" component={Login} />
       <PrivateRoute path="/" exact component={Home} />
+      <PrivateRoute path="/dashboard" component={Dashboard} />
       <PrivateRoute path="/management" exact component={ApplicationManagement} />
       <PrivateRoute path="/management/create" exact component={Application} />
       <PrivateRoute path="/management/plants/create" component={CreatePlant} />

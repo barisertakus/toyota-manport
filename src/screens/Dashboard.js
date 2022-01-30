@@ -1,6 +1,7 @@
 import Header from "components/core/Header/Header";
 import Applications from "components/dashboard/Applications";
 import React from "react";
+import "styles/Dashboard.css"
 
 function Dashboard() {
 

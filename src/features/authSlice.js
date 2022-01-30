@@ -17,7 +17,7 @@ export const fetchUserData = createAsyncThunk(
       const response = await api.post("api/auth/getUserFromToken", { token: accessToken });
       return response.data;
     } catch (e) {
-      localStorage.removeItem("token");
+      // localStorage.removeItem("token");
       return rejectWithValue("");
     }
   }

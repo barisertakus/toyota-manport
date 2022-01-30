@@ -1,0 +1,95 @@
+.applications{
+  display: flex;
+  flex-wrap: wrap;
+  margin: 10px;
+}
+
+.application__box{
+  margin-bottom : 2px;
+  margin-right: 2px;
+}
+
+.box__wrapper{
+  display: flex;
+}
+
+.application__header{
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border: 1px solid black;
+  justify-content: space-between;
+  border-radius: 3px;
+  text-transform: uppercase;
+}
+
+.application__header h3{
+  padding-left: 5px;
+}
+
+.application__header svg{
+  border-left: 1px solid black;
+  height: 35px;
+}
+
+.application__plants{
+  flex-wrap: wrap;
+}
+
+.plant__box {
+	border: 1px solid black;
+	margin: 1px;
+	max-width: 168px;
+}
+
+.plant__boxHeader {
+	background-color: gray;
+	width: 168px;
+	height: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+}
+
+.plant__servers {
+	display: block !important;
+	padding: 1px !important;
+}
+
+.plant__box h3 {
+	display: inline-flex;
+	color: white;
+}
+
+.server__box{
+  margin: 1px;
+}
+
+.server__boxHeader{
+  border: 1px solid black;
+  padding: 3px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.server__issues{
+  border: 1px solid black;
+  border-top: none;
+  display: flex;
+  flex-wrap: wrap;
+  min-height: 96px;
+}
+
+.issue__box{
+  border: 1px solid black;
+  text-align: center;
+  margin: 0.5px;
+  width: 51px;
+  height: 41px;
+  word-wrap: break-word;
+  border-radius: 2px;
+  padding-top: 4px;
+  overflow: hidden;
+}

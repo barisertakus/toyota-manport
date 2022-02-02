@@ -26,8 +26,8 @@ function Applications() {
     </div>
   ) : (
     <div className="applications">
-      {applications.map((uygulama) => (
-        <ApplicationBox key={uygulama.id} uygulama={uygulama} />
+      {applications.map((application) => (
+        <ApplicationBox key={application.id} application={application} />
       ))}
     </div>
   );

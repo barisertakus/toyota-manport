@@ -17,7 +17,7 @@
   cursor: pointer;
   display: flex;
   align-items: center;
-  border: 1px solid black;
+  border: 2px solid green;
   justify-content: space-between;
   border-radius: 3px;
   text-transform: uppercase;
@@ -28,7 +28,7 @@
 }
 
 .application__header svg{
-  border-left: 1px solid black;
+  border-left: 2px solid green;
   height: 35px;
 }
 

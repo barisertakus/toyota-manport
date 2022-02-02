@@ -1,4 +1,3 @@
-import { Button } from "@mui/material";
 import ApplicationDetails from "components/application/ApplicationDetails";
 import ApplicationHeader from "components/application/ApplicationHeader";
 import FactoryManagement from "components/application/factoryManagement/FactoryManagement";
@@ -6,9 +5,9 @@ import IssueManagement from "components/application/issueManagement/IssueManagem
 import Links from "components/application/links/Links";
 import MiddlewareManagement from "components/application/middlewareManagement/MiddlewareManagement";
 import React, { createRef, useState } from "react";
-import "styles/Application.css";
-import api from "helpers/api";
+import { useHistory } from "react-router-dom";
 import applicationService from "service/applicationService";
+import "styles/Application.css";
 
 function Application() {
   const [plants, setPlants] = useState([]);
@@ -17,6 +16,8 @@ function Application() {
 
   const applicationDetailsRef = createRef();
   const linksRef = createRef();
+
+  const history = useHistory();
 
   const getIssuesInCountry = (country) => {
     const contains = issues.filter((issue) => issue.country === country);
@@ -48,7 +49,10 @@ function Application() {
         links: linksRef.current.links,
         infrastructures: infrastructures,
       })
-      .then((response) => console.log(response));
+      .then((response) => {
+        console.log(response);
+        history.push("/management");
+      });
   };
 
   return (

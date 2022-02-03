@@ -1,0 +1,14 @@
+.issue__filters .appIssue{
+  min-width: 430px;
+}
+
+.issue__filters .filter__group {
+  display: flex; 
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.issue__filters .filter__submit {
+  display: flex;
+  justify-content: center;
+}

@@ -2,7 +2,7 @@ import { TextField } from "@mui/material";
 import React from "react";
 import AppDialogRow from "./AppDialogRow";
 
-function AppDialogTextRow({ name, label, value, disabled, handleChange }) {
+function AppDialogTextRow({ name, label, value, disabled, handleChange, ...props }) {
   return (
     <AppDialogRow label={label}>
       <TextField
@@ -13,6 +13,7 @@ function AppDialogTextRow({ name, label, value, disabled, handleChange }) {
         disabled={disabled}
         onChange={handleChange}
         fullWidth
+        {...props}
       />
     </AppDialogRow>
   );

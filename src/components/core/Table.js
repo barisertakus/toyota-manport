@@ -2,7 +2,7 @@ import { DataGrid } from "@mui/x-data-grid";
 import api from "helpers/api";
 import React, { forwardRef, useEffect, useState } from "react";
 
-const Table = forwardRef(({ columns, url }, ref) => {
+const Table = forwardRef(({ columns, url, tableStyle }, ref) => {
   const [currentPage, setCurrentPage] = useState(0);
   const [pageSize, setPageSize] = useState(10);
   const [sortModel, setSortModel] = useState([]);

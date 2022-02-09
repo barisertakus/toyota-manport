@@ -2,9 +2,10 @@ import { DataGrid } from "@mui/x-data-grid";
 import api from "helpers/api";
 import React, { forwardRef, useEffect, useState } from "react";
 
-const Table = forwardRef(({ columns, url, tableStyle }, ref) => {
+const Table = forwardRef(({ columns, url, tableStyle, search }, ref) => {
   const [currentPage, setCurrentPage] = useState(0);
   const [pageSize, setPageSize] = useState(10);
+  const [filterModel, setFilterModel] = useState({items:[]});
   const [sortModel, setSortModel] = useState([]);
   const [rows, setRows] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -41,13 +42,19 @@ const Table = forwardRef(({ columns, url, tableStyle }, ref) => {
     setSortModel(sortModel);
   };
 
+  const getApiRequest = (queryString) => {
+    if(search){
+      return api.post(queryString,search);
+    }
+    return api.get(queryString);
+  }
+
   const loadData = () => {
     const queryString = getQuery();
     if (!loading) {
       console.log("Loading rows", queryString);
       setLoading(true);
-      api
-        .get(queryString)
+      getApiRequest(queryString)
         .then((response) => {
           const { content, totalElements } = response.data;
           setRows(content);
@@ -63,8 +70,7 @@ const Table = forwardRef(({ columns, url, tableStyle }, ref) => {
   };
 
   //eslint-disable-next-line
-  useEffect(() => loadData(), [currentPage, pageSize, sortModel]);
-
+  useEffect(() => loadData(), [currentPage, pageSize, sortModel, search]);
 
   return (
     <div style={{ height: 400, width: "100%" }}>
@@ -79,6 +85,8 @@ const Table = forwardRef(({ columns, url, tableStyle }, ref) => {
         onPageSizeChange={handlePageSizeChange}
         pagination
         paginationMode="server"
+        filterModel={filterModel}
+        onFilterModelChange={(model)=>setFilterModel(model)}
         sortingMode="server"
         sortModel={sortModel}
         onSortModelChange={handleSortModelChange}

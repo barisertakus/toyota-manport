@@ -6,11 +6,29 @@ import applicationService from "service/applicationService";
 import "styles/Issues.css";
 import { issueStatusList } from "utils/Enums";
 
-function IssueFilters({ issueFilter, setIssueFilter }) {
+const initialFilters = {
+  applicationName: "",
+  status: "",
+  fromDate: "",
+  toDate: "",
+};
+
+function IssueFilters({ setSearch }) {
   const [applications, setApplications] = useState([]);
+
+  const [issueFilter, setIssueFilter] = useState(initialFilters);
 
   const handleChange = (e) => {
     setIssueFilter({ ...issueFilter, [e.target.name]: e.target.value });
+  };
+
+  const handleSearch = () => {
+    const { toDate, fromDate } = issueFilter;
+    setSearch(issueFilter);
+  };
+
+  const handleReset = () => {
+    setSearch(initialFilters);
   };
 
   useEffect(() => {
@@ -31,9 +49,9 @@ function IssueFilters({ issueFilter, setIssueFilter }) {
           <div className="filter__group">
             <AppDialogSelectRow
               label="Application"
-              name="application"
+              name="applicationName"
               list={applications}
-              value={issueFilter.application}
+              value={issueFilter.applicationName}
               variant="outlined"
               handleChange={handleChange}
             />
@@ -69,7 +87,10 @@ function IssueFilters({ issueFilter, setIssueFilter }) {
             />
           </div>
           <div className="filter__submit">
-            <Button variant="contained" color="warning">
+            <Button variant="contained" color="primary" onClick={handleReset}>
+              Reset
+            </Button>
+            <Button variant="contained" color="warning" onClick={handleSearch}>
               Search
             </Button>
           </div>

@@ -6,6 +6,12 @@ import { getIssuesColumns } from "utils/tableColumns/IssuesColumns";
 
 const issuesColumns = getIssuesColumns.map((e, i) => ({
   ...e,
+  ...(e.field === "updatedDate" && {
+    renderCell: (params) => {
+      const date = params.row.updatedDate;
+      return date ? date.replace("T", " ").substring(0, date.indexOf(".")) : "";
+    },
+  }),
   ...(e.field === "actions" && {
     renderCell: () => (
       <div>
@@ -28,15 +34,19 @@ const issuesColumns = getIssuesColumns.map((e, i) => ({
       </div>
     ),
   }),
-  ...(e.field === "createdDate" && {
-    renderCell: (params) => console.log(new Date(params.row.createdDate))
-  }),
+  // ...(e.field === "createdDate" && {
+  //   renderCell: (params) => console.log(new Date(params.row.createdDate))
+  // }),
 }));
 
-function IssuesTable() {
+function IssuesTable({ search }) {
   return (
     <Container style={{ marginBottom: 20, marginTop: 50 }}>
-      <Table columns={issuesColumns} url="api/issues/getAll" />
+      <Table
+        columns={issuesColumns}
+        url="api/issues/getAll"
+        search={search}
+      />
     </Container>
   );
 }

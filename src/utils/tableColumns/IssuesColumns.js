@@ -1,6 +1,6 @@
 export const getIssuesColumns = [
   {
-    field : "createdDate",
+    field : "updatedDate",
     headerName : "Date",
     width : 220,
   },

@@ -132,6 +132,6 @@ export const jdkVersions = [
 ];
 
 export const issueStatusList = [
-  { value: "ACTIVE", label: "ACTIVE" },
-  { value: "PASSIVE", label: "PASSIVE" },
+  { value: true, label: "ACTIVE" },
+  { value: false, label: "PASSIVE" },
 ];

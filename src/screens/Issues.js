@@ -5,22 +5,16 @@ import React, { useState } from "react";
 import "styles/Management.css";
 
 function Issues() {
-  const [issueFilter, setIssueFilter] = useState({
-    application: "",
-    status: "",
-    fromDate: "",
-    toDate: "",
-  });
+  const [search, setSearch] = useState({});
 
   return (
     <div className="issues">
       <Header />
       <h3 className="header__name">Issues</h3>
       <IssueFilters
-        issueFilter={issueFilter}
-        setIssueFilter={setIssueFilter}
+        setSearch={setSearch}
       />
-      <IssuesTable />
+      <IssuesTable search={search} />
     </div>
   );
 }

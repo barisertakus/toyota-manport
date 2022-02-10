@@ -54,6 +54,7 @@ const LinkDetails = forwardRef(({ plants }, ref) => {
       }
     });
     setLinks(tempLinks);
+    // eslint-disable-next-line
   }, [countries]);
 
   useEffect(() => {
@@ -74,7 +75,7 @@ const LinkDetails = forwardRef(({ plants }, ref) => {
             <LinkRow name={country}>
               <LinkRow name="Production">
                 <ServerLinks
-                  type="Production"
+                  type="PRODUCTION"
                   country={country}
                   handleServers={handleChange}
                   serverLinks={
@@ -84,7 +85,7 @@ const LinkDetails = forwardRef(({ plants }, ref) => {
               </LinkRow>
               <LinkRow name="Test">
                 <ServerLinks
-                  type="Test"
+                  type="TEST"
                   country={country}
                   handleServers={handleChange}
                   serverLinks={getServerList("Test", country) || serverLinks}

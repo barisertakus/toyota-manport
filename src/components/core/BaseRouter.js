@@ -12,6 +12,7 @@ import SignUp from "screens/Signup";
 import PrivateRoute from "./PrivateRoute";
 import Dashboard from "screens/Dashboard";
 import Issues from "screens/Issues";
+import Links from "screens/Links";
 
 function BaseRouter() {
   const dispatch = useDispatch();
@@ -32,6 +33,7 @@ function BaseRouter() {
       <PrivateRoute path="/management/plants/create" component={CreatePlant} />
       <PrivateRoute path="/management/plants" component={Plants} />
       <PrivateRoute path="/issues" component={Issues } />
+      <PrivateRoute path="/links" component={Links } />
       <Redirect to={"/404"} />
     </Switch>
   );

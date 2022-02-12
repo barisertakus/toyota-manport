@@ -1,6 +1,6 @@
 import { CircularProgress } from "@mui/material";
-import LinkRow from "components/application/links/LinkRow";
-import ServerLinks from "components/application/links/ServerLinks";
+import LinkRow from "./LinkRow";
+import ServerLinks from "./ServerLinks";
 import React, { useEffect, useState } from "react";
 import applicationService from "service/applicationService";
 

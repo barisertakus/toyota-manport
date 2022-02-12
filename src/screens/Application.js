@@ -2,7 +2,7 @@ import ApplicationDetails from "components/application/ApplicationDetails";
 import ApplicationHeader from "components/application/ApplicationHeader";
 import FactoryManagement from "components/application/factoryManagement/FactoryManagement";
 import IssueManagement from "components/application/issueManagement/IssueManagement";
-import Links from "components/application/links/Links";
+import ApplicationLinks from "components/links/ApplicationLinks";
 import MiddlewareManagement from "components/application/middlewareManagement/MiddlewareManagement";
 import React, { createRef, useState } from "react";
 import { useHistory } from "react-router-dom";
@@ -59,7 +59,7 @@ function Application() {
     <div>
       <ApplicationHeader handleSave={handleSave} />
       <ApplicationDetails applicationDetailsRef={applicationDetailsRef} />
-      <Links plants={plants} linksRef={linksRef} />
+      <ApplicationLinks plants={plants} linksRef={linksRef} />
       <FactoryManagement
         plants={plants}
         setPlants={setPlants}

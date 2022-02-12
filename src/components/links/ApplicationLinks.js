@@ -1,10 +1,10 @@
 import { Collapse } from "@mui/material";
 import React, { useState } from "react";
 import "styles/Links.css";
-import ApplicationDetailHeader from "../ApplicationDetailHeader";
+import ApplicationDetailHeader from "components/application/ApplicationDetailHeader";
 import LinkDetails from "./LinkDetails";
 
-function Links({ plants, linksRef }) {
+function ApplicationLinks({ plants, linksRef }) {
   const [collapseIn, setCollapseIn] = useState(false);
 
   const toggleCollapse = () => {
@@ -21,4 +21,4 @@ function Links({ plants, linksRef }) {
   );
 }
 
-export default Links;
+export default ApplicationLinks;

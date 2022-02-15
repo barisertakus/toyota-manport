@@ -1,10 +1,14 @@
+import { selectDisabled } from "features/applicationSlice";
 import React, { forwardRef, useEffect, useImperativeHandle, useState } from "react";
+import { useSelector } from "react-redux";
 import LinkRow from "./LinkRow";
 import ServerLinks from "./ServerLinks";
 
-const LinkDetails = forwardRef(({ plants }, ref) => {
+const LinkDetails = forwardRef(({ plants, ...props }, ref) => {
   const [countries, setCountries] = useState([]);
   const [links, setLinks] = useState([]);
+
+  const disabled = useSelector(selectDisabled);
 
   const serverLinks = {
     loadBalancer: "",
@@ -46,8 +50,8 @@ const LinkDetails = forwardRef(({ plants }, ref) => {
       const linksFound = links.filter((link) => link.country === country);
       if (linksFound[0]?.logs1 === undefined) {
         tempLinks.push(
-          { ...serverLinks, serverType: "Production", country: country },
-          { ...serverLinks, serverType: "Test", country: country }
+          { ...serverLinks, serverType: "PRODUCTION", country: country },
+          { ...serverLinks, serverType: "TEST", country: country }
         );
       } else {
         tempLinks.push(...linksFound);
@@ -62,6 +66,12 @@ const LinkDetails = forwardRef(({ plants }, ref) => {
       plants.filter((plant) => plant.alive).map((plant) => plant.country)
     );
   }, [plants]);
+
+  //TODO LİNK SET RETRY
+  useEffect(()=> {
+    if(props.links)
+      setLinks(props.links)
+  },[props.links])
 
   useImperativeHandle(ref, () => ({
     links: links,
@@ -79,8 +89,9 @@ const LinkDetails = forwardRef(({ plants }, ref) => {
                   country={country}
                   handleServers={handleChange}
                   serverLinks={
-                    getServerList("Production", country) || serverLinks
+                    getServerList("PRODUCTION", country) || serverLinks
                   }
+                  disabled={disabled}
                 />
               </LinkRow>
               <LinkRow name="Test">
@@ -88,7 +99,8 @@ const LinkDetails = forwardRef(({ plants }, ref) => {
                   type="TEST"
                   country={country}
                   handleServers={handleChange}
-                  serverLinks={getServerList("Test", country) || serverLinks}
+                  serverLinks={getServerList("TEST", country) || serverLinks}
+                  disabled={disabled}
                 />
               </LinkRow>
             </LinkRow>

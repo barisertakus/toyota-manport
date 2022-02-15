@@ -1,7 +1,7 @@
 import { Checkbox, Switch } from '@mui/material'
 import React from 'react'
 
-function FactoryRow({plant, handleChange}) {
+function FactoryRow({plant, handleChange, disabled}) {
 
 	const {country, alive, track} = plant;
 
@@ -12,6 +12,7 @@ function FactoryRow({plant, handleChange}) {
 					name={country}
 					checked={alive}
 					onChange={(e)=>handleChange(e,"alive")}
+					disabled={disabled}
 				/>
 				<h3>{country}</h3>
 			</div>
@@ -21,7 +22,7 @@ function FactoryRow({plant, handleChange}) {
 					name={country}
 					checked={track}
 					onChange={(e)=>handleChange(e,"track")}
-					disabled={!alive}
+					disabled={disabled || !alive}
 				/>
 			</div>
     </div>

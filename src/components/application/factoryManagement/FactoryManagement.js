@@ -8,6 +8,7 @@ function FactoryManagement({
   setPlants,
   getIssuesInCountry,
   deleteIssues,
+  editPlants,
 }) {
   const [collapseIn, setCollapseIn] = useState(true);
 
@@ -28,6 +29,7 @@ function FactoryManagement({
           setPlants={setPlants}
           getIssuesInCountry={getIssuesInCountry}
           deleteIssues={deleteIssues}
+          editPlants={editPlants}
         />
       </Collapse>
     </div>

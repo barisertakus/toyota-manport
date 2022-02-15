@@ -1,4 +1,6 @@
+import { selectDisabled } from "features/applicationSlice";
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import plantService from "service/plantService";
 import FactoryDialogContent from "./FactoryDialogContent";
 import FactoryRow from "./FactoryRow";
@@ -8,17 +10,20 @@ function FactoryOptions({
   setPlants,
   getIssuesInCountry,
   deleteIssues,
+  editPlants,
 }) {
   useEffect(() => {
     plantService
       .getAll()
-      .then((response) => setPlants(addTractAndAliveToPlants(response.data)))
+      .then((response) => setPlants(addTrackAndAliveToPlants(response.data)))
       .catch((error) => console.log(error));
   }, [setPlants]);
 
   const [issuesRemove, setIssuesRemove] = useState([]);
   const [plantRemove, setPlantRemove] = useState({});
   const [open, setOpen] = useState(false);
+
+  const disabled = useSelector(selectDisabled);
 
   const openDialog = () => {
     setOpen(true);
@@ -31,7 +36,7 @@ function FactoryOptions({
   const handleRemove = () => {
     closeDialog();
     deleteIssues(issuesRemove);
-    const { action, result, country } = plantRemove; 
+    const { action, result, country } = plantRemove;
     changeStatus(action, result, country); // change factory status after delete issues
   };
 
@@ -40,7 +45,7 @@ function FactoryOptions({
     setIssuesRemove([]);
   };
 
-  const addTractAndAliveToPlants = (plants) => {
+  const addTrackAndAliveToPlants = (plants) => {
     return plants.map((plant) => ({ ...plant, track: false, alive: false }));
   };
 
@@ -67,7 +72,7 @@ function FactoryOptions({
       changeStatus(action, result, country);
     }
   };
-
+    
   const changeStatus = (action, result, country) => {
     const plantFound = plants.find((plant) => plant.country === country);
     setPlants(
@@ -81,6 +86,25 @@ function FactoryOptions({
       // ...plant and change field like -> alive : true
     );
   };
+
+  const findIndexPlants = (country) => {
+    return plants.findIndex((plant) => plant.country === country);
+  };
+
+  useEffect(() => {
+    let tmpPlants = [...plants];
+    if (editPlants) {
+      editPlants.forEach((editPlant) => {
+        const index = findIndexPlants(editPlant.country);
+        return index !== -1
+          ? (tmpPlants[index] = { ...editPlant, alive: true })
+          : null;
+      });
+    }
+    setPlants(tmpPlants);
+
+    // eslint-disable-next-line
+  }, [editPlants]);
 
   return (
     <div className="country__management">
@@ -99,6 +123,7 @@ function FactoryOptions({
             key={plant.id}
             plant={plant}
             handleChange={handleChange}
+            disabled={disabled}
           />
         ))}
       </div>

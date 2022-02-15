@@ -1,12 +1,20 @@
 import { Container } from "@mui/material";
 import SimpleTable from "components/core/SimpleTable";
+import { selectDisabled } from "features/applicationSlice";
 import React from "react";
+import { useSelector } from "react-redux";
 import { getMiddlewareManagementColumns as getColumns } from "utils/tableColumns/MiddlewareManagementColumns";
 import DeleteInfra from "./actions/DeleteInfra";
 import EditInfra from "./actions/EditInfra";
 
 function MiddlewareManagementTable({ rows, editInfra, removeInfra, plants }) {
-  const middlewareManagementColumns = getColumns.map((e, i) => ({
+  const disabled = useSelector(selectDisabled);
+
+  const columns = disabled
+  ? getColumns.filter((col) => col.field !== "actions")
+  : getColumns;
+
+  const middlewareManagementColumns = columns.map((e, i) => ({
     ...e,
     ...(e.field === "actions" && {
       renderCell: (params) => (

@@ -1,6 +1,8 @@
 import { Container } from "@mui/material";
 import SimpleTable from "components/core/SimpleTable";
+import { selectDisabled } from "features/applicationSlice";
 import React from "react";
+import { useSelector } from "react-redux";
 import { getIssueAppColumns } from "utils/tableColumns/IssueAppColumns";
 import DeleteAppIssue from "./actions/DeleteAppIssue";
 import EditAppIssue from "./actions/EditAppIssue";
@@ -8,7 +10,11 @@ import TrackAppIssue from "./actions/TrackAppIssue";
 import ViewAppIssue from "./actions/ViewAppIssue";
 
 function IssueManagementTable({ rows, removeIssue, editIssue, plants }) {
-  const issueAppColumns = getIssueAppColumns.map((e, i) => ({
+  const disabled = useSelector(selectDisabled);
+  const columns = disabled
+    ? getIssueAppColumns.filter((col) => col.field !== "actions")
+    : getIssueAppColumns;
+  const issueAppColumns = columns.map((e, i) => ({
     ...e,
     ...(e.field === "actions" && {
       renderCell: (params) => {
@@ -33,7 +39,11 @@ function IssueManagementTable({ rows, removeIssue, editIssue, plants }) {
 
   return (
     <Container>
-      <SimpleTable columns={issueAppColumns} rows={rows} getRowId={((row)=> row.orderNo)} />
+      <SimpleTable
+        columns={issueAppColumns}
+        rows={rows}
+        getRowId={(row) => row.orderNo}
+      />
     </Container>
   );
 }

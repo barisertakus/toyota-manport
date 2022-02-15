@@ -4,7 +4,7 @@ import "styles/Links.css";
 import ApplicationDetailHeader from "components/application/ApplicationDetailHeader";
 import LinkDetails from "./LinkDetails";
 
-function ApplicationLinks({ plants, linksRef }) {
+function ApplicationLinks({ plants, linksRef, links }) {
   const [collapseIn, setCollapseIn] = useState(false);
 
   const toggleCollapse = () => {
@@ -15,7 +15,7 @@ function ApplicationLinks({ plants, linksRef }) {
     <div className="links">
       <ApplicationDetailHeader name="Links" handleClick={toggleCollapse} open={collapseIn} />
       <Collapse in={collapseIn}>
-        <LinkDetails plants={plants} ref={linksRef} />
+        <LinkDetails plants={plants} ref={linksRef} links={links} />
       </Collapse>
     </div>
   );

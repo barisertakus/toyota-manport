@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import ApplicationDetailHeader from "./ApplicationDetailHeader";
 import ApplicationForm from "./ApplicationForm";
 
-function ApplicationDetails({ applicationDetailsRef }) {
+function ApplicationDetails({ applicationDetailsRef, application }) {
   const [collapseIn, setCollapseIn] = useState(true);
 
   const toggleCollapse = () => {
@@ -18,7 +18,10 @@ function ApplicationDetails({ applicationDetailsRef }) {
         open={collapseIn}
       />
       <Collapse in={collapseIn}>
-        <ApplicationForm ref={applicationDetailsRef} />
+        <ApplicationForm
+          ref={applicationDetailsRef}
+          application={application}
+        />
       </Collapse>
     </div>
   );

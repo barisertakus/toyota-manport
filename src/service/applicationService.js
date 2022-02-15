@@ -5,8 +5,11 @@ const applicationService = {
     return api.post("api/application/save", application);
   },
   getApplications: () => {
-    return api.get("api/application/getAllForDashboard")
-  }
+    return api.get("api/application/getAllForDashboard");
+  },
+  getApplicationByShortName: (shortName) => {
+    return api.get(`api/application/${shortName}`);
+  },
 };
 
 export default applicationService;

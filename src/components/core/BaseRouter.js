@@ -32,6 +32,7 @@ function BaseRouter() {
       <PrivateRoute path="/management/create" exact component={Application} />
       <PrivateRoute path="/management/plants/create" component={CreatePlant} />
       <PrivateRoute path="/management/plants" component={Plants} />
+      <PrivateRoute path="/management/:shortName" exact component={Application} />
       <PrivateRoute path="/issues" component={Issues } />
       <PrivateRoute path="/links" component={Links } />
       <Redirect to={"/404"} />

@@ -1,5 +1,12 @@
 import { Checkbox, TextField } from "@mui/material";
-import React, { forwardRef, useImperativeHandle, useState } from "react";
+import { selectDisabled } from "features/applicationSlice";
+import React, {
+  forwardRef,
+  useEffect,
+  useImperativeHandle,
+  useState,
+} from "react";
+import { useSelector } from "react-redux";
 import CustomSelect from "utils/CustomSelect";
 import {
   backends,
@@ -9,7 +16,7 @@ import {
   responsibleTeams,
 } from "utils/Enums";
 
-const ApplicationForm = forwardRef((_, ref) => {
+const ApplicationForm = forwardRef(( props , ref) => {
   const [application, setApplication] = useState({
     shortName: "",
     releaseDate: "",
@@ -25,6 +32,8 @@ const ApplicationForm = forwardRef((_, ref) => {
     lineStopRisk: false,
   });
 
+  const disabled = useSelector(selectDisabled);
+
   const handleChange = (event) => {
     setApplication({ ...application, [event.target.name]: event.target.value });
   };
@@ -32,6 +41,12 @@ const ApplicationForm = forwardRef((_, ref) => {
   useImperativeHandle(ref, () => ({
     application: application,
   }));
+
+  useEffect(() => {
+    if (props?.application)
+      setApplication({ ...application, ...props.application });
+    //eslint-disable-next-line
+  }, [props.application]);
 
   return (
     <div className="application__details">
@@ -52,6 +67,7 @@ const ApplicationForm = forwardRef((_, ref) => {
             value={application.shortName}
             variant="outlined"
             onChange={handleChange}
+            disabled={disabled}
           />
 
           <TextField
@@ -61,6 +77,7 @@ const ApplicationForm = forwardRef((_, ref) => {
             InputLabelProps={{ shrink: true }}
             label="Release Date"
             type="date"
+            disabled={disabled}
           />
 
           <TextField
@@ -69,6 +86,7 @@ const ApplicationForm = forwardRef((_, ref) => {
             value={application.responsible}
             label="Responsible"
             variant="outlined"
+            disabled={disabled}
           />
 
           <CustomSelect
@@ -76,6 +94,7 @@ const ApplicationForm = forwardRef((_, ref) => {
             handleChange={handleChange}
             list={backends}
             value={application.backend}
+            disabled={disabled}
           />
 
           <CustomSelect
@@ -83,6 +102,7 @@ const ApplicationForm = forwardRef((_, ref) => {
             handleChange={handleChange}
             list={frontends}
             value={application.frontend}
+            disabled={disabled}
           />
 
           <CustomSelect
@@ -90,6 +110,7 @@ const ApplicationForm = forwardRef((_, ref) => {
             handleChange={handleChange}
             list={databases}
             value={application.database}
+            disabled={disabled}
           />
         </div>
       </div>
@@ -103,9 +124,10 @@ const ApplicationForm = forwardRef((_, ref) => {
           <h3>Line Count of Frontend Code:</h3>
           <div className="line-stop">
             <Checkbox
-            // checked={application.lineStopRisk}
-            // name="lineStopRisk"
-            // handleChange={handleChange}
+              // checked={application.lineStopRisk}
+              // name="lineStopRisk"
+              // handleChange={handleChange}
+              disabled={disabled}
             />
             <h3>Line Stop Risk (activate critical issue alarms)</h3>
           </div>
@@ -117,6 +139,7 @@ const ApplicationForm = forwardRef((_, ref) => {
             label="Full Name"
             value={application.fullName}
             variant="outlined"
+            disabled={disabled}
           />
 
           <CustomSelect
@@ -124,6 +147,7 @@ const ApplicationForm = forwardRef((_, ref) => {
             handleChange={handleChange}
             list={businessAreaTypes}
             value={application.businessAreaType}
+            disabled={disabled}
           />
 
           <CustomSelect
@@ -131,6 +155,7 @@ const ApplicationForm = forwardRef((_, ref) => {
             handleChange={handleChange}
             list={responsibleTeams}
             value={application.responsibleTeam}
+            disabled={disabled}
           />
 
           <TextField
@@ -139,6 +164,7 @@ const ApplicationForm = forwardRef((_, ref) => {
             type="number"
             variant="outlined"
             value={application.lineCountOfBackendCode}
+            disabled={disabled}
           />
 
           <TextField
@@ -147,6 +173,7 @@ const ApplicationForm = forwardRef((_, ref) => {
             type="number"
             variant="outlined"
             value={application.lineCountOfFrontendCode}
+            disabled={disabled}
           />
         </div>
       </div>

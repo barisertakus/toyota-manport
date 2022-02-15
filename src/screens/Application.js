@@ -4,12 +4,21 @@ import FactoryManagement from "components/application/factoryManagement/FactoryM
 import IssueManagement from "components/application/issueManagement/IssueManagement";
 import ApplicationLinks from "components/links/ApplicationLinks";
 import MiddlewareManagement from "components/application/middlewareManagement/MiddlewareManagement";
-import React, { createRef, useState } from "react";
-import { useHistory } from "react-router-dom";
+import React, { createRef, useEffect, useState } from "react";
+import { useHistory, useLocation } from "react-router-dom";
 import applicationService from "service/applicationService";
 import "styles/Application.css";
+import { setDisabled } from "features/applicationSlice";
+import { useDispatch } from "react-redux";
 
 function Application() {
+  const location = useLocation();
+  const dispatch = useDispatch();
+
+  const [application, setApplication] = useState();
+  const [links, setLinks] = useState();
+  const [editPlants, setEditPlants] = useState([]);
+
   const [plants, setPlants] = useState([]);
   const [issues, setIssues] = useState([]);
   const [infrastructures, setInfrastructures] = useState([]);
@@ -55,16 +64,62 @@ function Application() {
       });
   };
 
+  const getShortNameFromLocation = () => {
+    const path = location.pathname.split("/");
+    return path[2];
+  };
+
+  const clearBlanks = (obj) => {
+    return Object.entries(obj).reduce(
+      (a, [k, v]) => (v ? ((a[k] = v), a) : a),
+      {}
+    );
+  };
+
+  const addOrderNo = (arr) => {
+    return arr.map((arr, i) => ({ ...arr, orderNo: i + 1 }));
+  };
+
+  const checkDisabled = () => {
+    if (location.state?.edit) dispatch(setDisabled(false));
+    else dispatch(setDisabled(true));
+  };
+
+  useEffect(() => {
+    const shortName = getShortNameFromLocation();
+    if (shortName === "create") {
+      dispatch(setDisabled(false));
+    } else {
+      checkDisabled();
+      applicationService
+        .getApplicationByShortName(shortName)
+        .then((response) => {
+          const app = clearBlanks(response.data);
+          console.log(app);
+          setApplication(app);
+          setEditPlants(app.plants);
+          setLinks(app.links);
+          setIssues(addOrderNo(app.issues));
+          setInfrastructures(addOrderNo(app.infrastructures));
+        })
+        .catch((error) => console.log(error));
+    }
+  }, []);
+
   return (
     <div>
       <ApplicationHeader handleSave={handleSave} />
-      <ApplicationDetails applicationDetailsRef={applicationDetailsRef} />
-      <ApplicationLinks plants={plants} linksRef={linksRef} />
+      <ApplicationDetails
+        applicationDetailsRef={applicationDetailsRef}
+        application={application}
+      />
+      <ApplicationLinks plants={plants} linksRef={linksRef} links={links} />
       <FactoryManagement
         plants={plants}
         setPlants={setPlants}
         getIssuesInCountry={getIssuesInCountry}
         deleteIssues={deleteIssues}
+        editPlants={editPlants}
       />
       <IssueManagement issues={issues} setIssues={setIssues} plants={plants} />
       <MiddlewareManagement

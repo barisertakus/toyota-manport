@@ -10,6 +10,9 @@ const applicationService = {
   getApplicationByShortName: (shortName) => {
     return api.get(`api/application/${shortName}`);
   },
+  editApplication: (application) => {
+    return api.put("api/application/edit", application);
+  },
 };
 
 export default applicationService;

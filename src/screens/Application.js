@@ -48,21 +48,41 @@ function Application() {
   // const check
 
   const handleSave = () => {
-    const plantsSave = plants.filter((plant) => plant.alive);
+    if(application) { // edit request
+      editApplication();
+    } else { // add request
+      addApplication();
+    }
+  };
 
+  const getApplicationDetails = () => {
+    const plantsSave = plants.filter((plant) => plant.alive);
+    return {
+      ...applicationDetailsRef.current.application,
+      plants: plantsSave,
+      issues: issues,
+      links: linksRef.current.links,
+      infrastructures: infrastructures,
+    }
+  }
+
+  const addApplication = () => {
     applicationService
-      .addApplication({
-        ...applicationDetailsRef.current.application,
-        plants: plantsSave,
-        issues: issues,
-        links: linksRef.current.links,
-        infrastructures: infrastructures,
-      })
+      .addApplication(getApplicationDetails())
       .then((response) => {
         console.log(response);
         history.push("/management");
       });
-  };
+  }
+
+  const editApplication = () => {
+    applicationService
+    .editApplication(getApplicationDetails())
+    .then((response) => {
+      console.log(response);
+      history.push("/management");
+    });
+  }
 
   const getShortNameFromLocation = () => {
     const path = location.pathname.split("/");

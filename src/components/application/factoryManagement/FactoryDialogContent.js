@@ -19,7 +19,7 @@ function FactoryDialogContent({open, setOpen, handleCancel, handleRemove, issues
           {issuesRemove.map((issue, i) => (
             <div key={i}>
               <ListItem button>
-                <ListItemText primary={issue.description} />
+                <ListItemText primary={issue.issueType} />
               </ListItem>
               <Divider />
             </div>
